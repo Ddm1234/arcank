@@ -1,3 +1,4 @@
+import { encodeFunctionData, parseUnits, isAddress } from "viem";
 import { AppKit } from "@circle-fin/app-kit";
 import { createViemAdapterFromProvider } from "@circle-fin/adapter-viem-v2";
 
@@ -7,6 +8,12 @@ const walletStatus = document.getElementById("walletStatus");
 const recipientInput = document.getElementById("recipient");
 const amountInput = document.getElementById("amount");
 const message = document.getElementById("message");
+const batchSendButton = document.getElementById("batchSendButton");
+const batchPayments = document.getElementById("batchPayments");
+const batchMessage = document.getElementById("batchMessage");
+
+const BATCH_CONTRACT = "0xB15C4f77234f8e03AbB564834e3FbFc15aAe60d0";
+const USDC_CONTRACT = "0x3600000000000000000000000000000000000000";
 
 const ARC_CHAIN_ID = "0x4cef52";
 
@@ -74,6 +81,7 @@ connectButton.addEventListener("click", async () => {
 
     connectButton.textContent = "Wallet Connected";
     sendButton.disabled = false;
+    batchSendButton.disabled = false;
     message.textContent = "Ready to send USDC on Arc Testnet.";
   } catch (error) {
     console.error(error);
@@ -140,5 +148,105 @@ sendButton.addEventListener("click", async () => {
       error?.message || "Payment failed or was rejected.";
   } finally {
     sendButton.disabled = false;
+    batchSendButton.disabled = false;
+  }
+});
+
+batchSendButton.addEventListener("click", async () => {
+  try {
+    if (!walletProvider || !walletAddress) {
+      throw new Error("Connect your wallet first.");
+    }
+
+    const lines = batchPayments.value
+      .split("\n")
+      .map(line => line.trim())
+      .filter(Boolean);
+
+    if (lines.length === 0) {
+      throw new Error("Enter at least one recipient.");
+    }
+
+    const recipients = [];
+    const amounts = [];
+    let total = 0n;
+
+    for (const line of lines) {
+      const parts = line.split(",");
+
+      if (parts.length !== 2) {
+        throw new Error(
+          "Invalid line. Use: wallet-address,amount"
+        );
+      }
+
+      const recipient = parts[0].trim();
+      const amountText = parts[1].trim();
+
+      if (!isAddress(recipient)) {
+        throw new Error(`Invalid address: ${recipient}`);
+      }
+
+      const amount = parseUnits(amountText, 6);
+
+      if (amount <= 0n) {
+        throw new Error("Amounts must be greater than zero.");
+      }
+
+      recipients.push(recipient);
+      amounts.push(amount);
+      total += amount;
+    }
+
+    batchMessage.textContent =
+      `Preparing batch of ${recipients.length} payment(s)...`;
+
+    const batchData = encodeFunctionData({
+      abi: [{
+        type: "function",
+        name: "batchTransfer",
+        stateMutability: "nonpayable",
+        inputs: [
+          {
+            name: "recipients",
+            type: "address[]"
+          },
+          {
+            name: "amounts",
+            type: "uint256[]"
+          }
+        ],
+        outputs: []
+      }],
+      functionName: "batchTransfer",
+      args: [recipients, amounts]
+    });
+
+    batchMessage.textContent =
+      "Confirm the batch transaction in your wallet...";
+
+    const txHash = await walletProvider.request({
+      method: "eth_sendTransaction",
+      params: [{
+        from: walletAddress,
+        to: BATCH_CONTRACT,
+        data: batchData
+      }]
+    });
+
+    batchMessage.innerHTML =
+      'Batch payment submitted. <a href="https://testnet.arcscan.app/tx/' +
+      txHash +
+      '" target="_blank" rel="noopener noreferrer">View transaction</a>';
+
+    console.log("Batch transaction:", txHash);
+
+  } catch (error) {
+    console.error(error);
+
+    batchMessage.textContent =
+      error?.shortMessage ||
+      error?.message ||
+      "Batch payment failed or was rejected.";
   }
 });

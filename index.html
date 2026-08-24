@@ -38,6 +38,14 @@
       <button id="sendButton" disabled>Send Payment</button>
 
       <p id="message"></p>
+      <hr>
+      <p class="eyebrow">BATCH PAYMENT</p>
+      <h2>Send to Multiple Wallets</h2>
+      <label for="batchPayments">Recipients and amounts</label>
+      <textarea id="batchPayments" rows="6" placeholder="0xRecipientAddress,0.5&#10;0xRecipientAddress,1.25"></textarea>
+      <p class="batch-help">One recipient per line: wallet address, amount in USDC.</p>
+      <button id="batchSendButton" disabled>Send Batch Payment</button>
+      <p id="batchMessage"></p>
     </section>
   </main>
 
