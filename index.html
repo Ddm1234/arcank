@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArcPay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <section class="card">
+      <p class="eyebrow">ARC TESTNET</p>
+      <h1>ArcPay</h1>
+      <p class="subtitle">Simple USDC payments on Arc Testnet.</p>
+
+      <button id="connectButton">Connect Wallet</button>
+
+      <p id="walletStatus">Wallet not connected</p>
+
+      <label for="recipient">Recipient address</label>
+      <input
+        id="recipient"
+        type="text"
+        placeholder="0x..."
+        autocomplete="off"
+      >
+
+      <label for="amount">Amount (USDC)</label>
+      <input
+        id="amount"
+        type="number"
+        min="0"
+        step="0.000001"
+        placeholder="0.00"
+      >
+
+      <button id="sendButton" disabled>Send Payment</button>
+
+      <p id="message"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
+EOFEOF
