@@ -728,3 +728,20 @@ input[type="file"] {
   line-height: 1;
 }
 
+
+.saved-lists-header {
+  background: #000 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.saved-lists-header strong {
+  color: #fff !important;
+}
+
+.saved-lists-header button {
+  background: #fff !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+}
+
