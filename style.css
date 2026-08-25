@@ -211,3 +211,7 @@ input[type="file"] {
   font-size: 12px;
   color: #8f98a5;
 }
+
+#walletProfile[hidden] {
+  display: none;
+}
