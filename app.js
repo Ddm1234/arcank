@@ -11,6 +11,8 @@ const message = document.getElementById("message");
 const batchSendButton = document.getElementById("batchSendButton");
 const batchPayments = document.getElementById("batchPayments");
 const batchMessage = document.getElementById("batchMessage");
+const csvFile = document.getElementById("csvFile");
+const csvSummary = document.getElementById("csvSummary");
 
 const BATCH_CONTRACT = "0xB15C4f77234f8e03AbB564834e3FbFc15aAe60d0";
 const USDC_CONTRACT = "0x3600000000000000000000000000000000000000";
@@ -317,5 +319,78 @@ batchSendButton.addEventListener("click", async () => {
       error?.shortMessage ||
       error?.message ||
       "Batch payment failed or was rejected.";
+  }
+});
+
+csvFile.addEventListener("change", async () => {
+  try {
+    const file = csvFile.files[0];
+
+    if (!file) return;
+
+    const text = await file.text();
+
+    const lines = text
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(Boolean);
+
+    if (lines.length === 0) {
+      throw new Error("CSV file is empty.");
+    }
+
+    let start = 0;
+
+    if (lines[0].toLowerCase() === "recipient,amount") {
+      start = 1;
+    }
+
+    const rows = lines.slice(start);
+
+    if (rows.length === 0) {
+      throw new Error("CSV contains no recipients.");
+    }
+
+    if (rows.length > 100) {
+      throw new Error("Maximum 100 recipients allowed.");
+    }
+
+    const validRows = [];
+
+    for (const line of rows) {
+      const parts = line.split(",");
+
+      if (parts.length !== 2) {
+        throw new Error(`Invalid CSV row: ${line}`);
+      }
+
+      const address = parts[0].trim();
+      const amount = parts[1].trim();
+
+      if (!isAddress(address)) {
+        throw new Error(`Invalid wallet address: ${address}`);
+      }
+
+      if (!amount || Number(amount) <= 0) {
+        throw new Error(`Invalid amount: ${amount}`);
+      }
+
+      validRows.push(`${address},${amount}`);
+    }
+
+    batchPayments.value = validRows.join("\n");
+
+    csvSummary.textContent =
+      `${validRows.length} recipient(s) loaded successfully.`;
+
+    batchMessage.textContent =
+      "CSV loaded. Review the batch and press Send Batch Payment.";
+
+  } catch (error) {
+    csvSummary.textContent = "";
+    batchPayments.value = "";
+    batchMessage.textContent =
+      error?.message || "Failed to read CSV.";
+    csvFile.value = "";
   }
 });

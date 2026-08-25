@@ -40,6 +40,9 @@
       <p id="message"></p>
       <hr>
       <p class="eyebrow">BATCH PAYMENT</p>
+      <label for="csvFile">Upload CSV (maximum 100 recipients)</label>
+      <input id="csvFile" type="file" accept=".csv,text/csv">
+      <p id="csvSummary"></p>
       <h2>Send to Multiple Wallets</h2>
       <label for="batchPayments">Recipients and amounts</label>
       <textarea id="batchPayments" rows="6" placeholder="0xRecipientAddress,0.5&#10;0xRecipientAddress,1.25"></textarea>
