@@ -4,9 +4,9 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #111;
+  font-family: Inter, Arial, sans-serif;
+  background: #0b0d10;
+  color: #f5f7fa;
 }
 
 .container {
@@ -19,42 +19,68 @@ body {
 
 .card {
   width: 100%;
-  max-width: 420px;
-  background: white;
+  max-width: 480px;
+  background: #12161c;
+  border: 1px solid #252b33;
   padding: 28px;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 .eyebrow {
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 2px;
+  color: #8f98a5;
   margin: 0 0 8px;
 }
 
 h1 {
   margin: 0;
-  font-size: 36px;
+  font-size: 38px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  margin: 22px 0 4px;
+  font-size: 20px;
 }
 
 .subtitle {
-  color: #666;
-  margin-bottom: 24px;
+  color: #8f98a5;
+  margin: 8px 0 24px;
+  line-height: 1.5;
 }
 
 label {
   display: block;
   margin: 18px 0 8px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 600;
+  color: #c5cbd3;
 }
 
-input {
+input,
+textarea {
   width: 100%;
   padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
+  border: 1px solid #303741;
+  border-radius: 12px;
+  background: #0d1117;
+  color: #f5f7fa;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #687382;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+  font-family: monospace;
 }
 
 button {
@@ -62,29 +88,77 @@ button {
   padding: 14px;
   margin-top: 16px;
   border: 0;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 #connectButton {
-  background: #111;
-  color: white;
+  background: #f5f7fa;
+  color: #0b0d10;
 }
 
-#sendButton {
-  background: #ddd;
-  color: #777;
+#sendButton,
+#batchSendButton {
+  background: #f5f7fa;
+  color: #0b0d10;
 }
 
-#sendButton:enabled {
-  background: #111;
-  color: white;
+#walletStatus,
+#message,
+#batchMessage,
+#csvSummary {
+  font-size: 13px;
+  color: #8f98a5;
+  line-height: 1.5;
 }
 
-.status,
-.message {
-  font-size: 14px;
-  color: #666;
+#walletStatus {
+  margin: 10px 0 4px;
+  word-break: break-all;
+}
+
+.batch-help {
+  margin: 8px 0;
+  font-size: 12px;
+  color: #707986;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #252b33;
+  margin: 28px 0;
+}
+
+input[type="file"] {
+  padding: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .container {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .card {
+    margin-top: 12px;
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
 }
