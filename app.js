@@ -83,6 +83,7 @@ connectButton.addEventListener("click", async () => {
       walletAddress.slice(-4);
 
     connectButton.textContent = "Wallet Connected";
+    connectButton.hidden = true;
     disconnectButton.hidden = false;
     sendButton.disabled = false;
     batchSendButton.disabled = false;
@@ -412,6 +413,7 @@ disconnectButton.addEventListener("click", () => {
 
   walletStatus.textContent = "Wallet not connected";
   connectButton.textContent = "Connect Wallet";
+  connectButton.hidden = false;
   disconnectButton.hidden = true;
 
   sendButton.disabled = true;
