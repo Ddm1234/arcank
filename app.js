@@ -175,7 +175,7 @@ batchSendButton.addEventListener("click", async () => {
     let total = 0n;
 
     for (const line of lines) {
-      const parts = line.split(",");
+      const parts = line.replace(/^"|"$/g, "").split(",");
 
       if (parts.length !== 2) {
         throw new Error("Use: wallet-address,amount");
@@ -358,7 +358,7 @@ csvFile.addEventListener("change", async () => {
     const validRows = [];
 
     for (const line of rows) {
-      const parts = line.split(",");
+      const parts = line.replace(/^"|"$/g, "").split(",");
 
       if (parts.length !== 2) {
         throw new Error(`Invalid CSV row: ${line}`);
