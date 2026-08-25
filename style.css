@@ -695,3 +695,36 @@ input[type="file"] {
   font-weight: 700 !important;
 }
 
+
+.saved-lists-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  margin: -22px -22px 24px;
+  padding: 8px 12px 8px 16px;
+  box-sizing: border-box;
+  background: #eef2ff;
+  border-bottom: 1px solid #c7d2fe;
+  border-radius: 0 0 12px 12px;
+}
+
+.saved-lists-header strong {
+  color: #111827 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.saved-lists-header button {
+  width: 36px;
+  height: 36px;
+  margin: 0 !important;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: #fff;
+  color: #111827 !important;
+  font-size: 22px;
+  line-height: 1;
+}
+
