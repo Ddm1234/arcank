@@ -613,3 +613,12 @@ input[type="file"] {
   margin: 0;
 }
 
+
+.saved-list-action-dialog > strong {
+  display: block;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
