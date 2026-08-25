@@ -604,7 +604,6 @@ function renderSavedLists() {
         batchPayments.value = selected.rows.join("\n");
         updateCsvPreview(selected.rows);
         batchPayments.hidden = true;
-        savedListsPanel.hidden = true;
         batchMessage.textContent = selected.name + " loaded.";
 
         renderSavedLists();
