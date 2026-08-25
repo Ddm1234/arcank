@@ -520,7 +520,26 @@ function saveSavedLists(lists) {
   localStorage.setItem(key, JSON.stringify(lists));
 }
 
+function clearLoadedSavedLists() {
+  const lists = getSavedLists();
+  if (!lists.length) return;
+
+  let changed = false;
+
+  lists.forEach(list => {
+    if (list.loaded) {
+      list.loaded = false;
+      changed = true;
+    }
+  });
+
+  if (changed) {
+    saveSavedLists(lists);
+  }
+}
+
 function renderSavedLists() {
+  clearLoadedSavedLists();
   const content = document.getElementById("savedListsContent");
 
   if (!walletAddress) {
