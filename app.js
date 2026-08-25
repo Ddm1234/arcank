@@ -488,10 +488,12 @@ const closeSavedLists = document.getElementById("closeSavedLists");
 
 savedListsButton.addEventListener("click", () => {
   savedListsPanel.hidden = false;
+  savedListsButton.hidden = true;
 });
 
 closeSavedLists.addEventListener("click", () => {
   savedListsPanel.hidden = true;
+  savedListsButton.hidden = false;
 });
 
 

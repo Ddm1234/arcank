@@ -675,3 +675,14 @@ input[type="file"] {
   font-size: 16px;
 }
 
+
+.saved-lists-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saved-lists-header button {
+  margin-left: auto;
+}
+
