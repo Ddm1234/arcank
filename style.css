@@ -588,3 +588,6 @@ input[type="file"] {
 #cancelSavedListAction {
   margin-top: 10px;
 }
+.saved-list-action-overlay[hidden] {
+  display: none !important;
+}
