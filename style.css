@@ -636,3 +636,13 @@ input[type="file"] {
   padding: 4px 0 16px !important;
 }
 
+
+.saved-list-info strong {
+  color: #111 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.4;
+}
+
