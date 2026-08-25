@@ -7,6 +7,42 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button id="savedListsButton" class="saved-lists-button" aria-label="Open saved lists">
+    ☰
+  </button>
+
+  <aside id="savedListsPanel" class="saved-lists-panel" hidden>
+    <div class="saved-lists-header">
+      <strong>Saved Lists</strong>
+      <button id="closeSavedLists" aria-label="Close saved lists">×</button>
+    </div>
+
+    <div id="savedListsContent">
+      <p>Connect wallet to view saved lists.</p>
+    </div>
+
+    <div class="saved-list-save">
+      <label for="savedListName">List name</label>
+      <input
+        id="savedListName"
+        type="text"
+        placeholder="e.g. Family"
+        maxlength="50"
+        autocomplete="off"
+      >
+
+      <label for="savedCsvFile" class="saved-csv-upload">
+        ＋ Choose CSV
+      </label>
+      <input id="savedCsvFile" type="file" accept=".csv,text/csv" hidden>
+
+      <p id="savedCsvName"></p>
+
+      <button id="saveCsvButton" disabled>
+        Save List
+      </button>
+    </div>
+  </aside>
   <main class="container">
     <section class="card">
 

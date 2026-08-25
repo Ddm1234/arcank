@@ -391,3 +391,112 @@ input[type="file"] {
 .csv-preview-total strong {
   font-size: 15px;
 }
+
+.saved-lists-button {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 1001;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.saved-lists-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: min(320px, 85vw);
+  height: 100vh;
+  padding: 22px;
+  box-sizing: border-box;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
+  overflow-y: auto;
+}
+
+.saved-lists-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.saved-lists-header strong {
+  font-size: 20px;
+}
+
+.saved-lists-header button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 22px;
+}
+
+.saved-csv-upload {
+  display: block;
+  margin-top: 20px;
+  padding: 12px;
+  text-align: center;
+  border: 1px dashed #aaa;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+.saved-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.saved-list-load {
+  flex: 1;
+  text-align: left;
+  margin: 0;
+}
+
+.saved-list-delete {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.saved-list-save {
+  margin-top: 24px;
+}
+
+.saved-list-save label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.saved-list-save input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+.saved-list-save button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+#savedCsvName {
+  margin: 8px 0;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+

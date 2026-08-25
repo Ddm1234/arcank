@@ -139,6 +139,7 @@ connectButton.addEventListener("click", async () => {
     walletProfile.hidden = false;
     sendButton.disabled = false;
     batchSendButton.disabled = false;
+    renderSavedLists();
     message.textContent = "Ready to send USDC on Arc Testnet.";
   } catch (error) {
     console.error(error);
@@ -476,6 +477,223 @@ disconnectButton.addEventListener("click", () => {
 
   sendButton.disabled = true;
   batchSendButton.disabled = true;
+  renderSavedLists();
 
   message.textContent = "Wallet disconnected.";
 });
+
+const savedListsButton = document.getElementById("savedListsButton");
+const savedListsPanel = document.getElementById("savedListsPanel");
+const closeSavedLists = document.getElementById("closeSavedLists");
+
+savedListsButton.addEventListener("click", () => {
+  savedListsPanel.hidden = false;
+});
+
+closeSavedLists.addEventListener("click", () => {
+  savedListsPanel.hidden = true;
+});
+
+
+function getSavedListsKey() {
+  if (!walletAddress) return null;
+  return "arcPay_saved_lists_" + walletAddress.toLowerCase();
+}
+
+function getSavedLists() {
+  const key = getSavedListsKey();
+  if (!key) return [];
+
+  try {
+    return JSON.parse(localStorage.getItem(key) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function saveSavedLists(lists) {
+  const key = getSavedListsKey();
+  if (!key) return;
+
+  localStorage.setItem(key, JSON.stringify(lists));
+}
+
+function renderSavedLists() {
+  const content = document.getElementById("savedListsContent");
+
+  if (!walletAddress) {
+    content.innerHTML = "<p>Connect wallet to view saved lists.</p>";
+    return;
+  }
+
+  const lists = getSavedLists();
+
+  if (lists.length === 0) {
+    content.innerHTML = "<p>No saved lists.</p>";
+    return;
+  }
+
+  content.innerHTML = "";
+
+  lists.forEach((list, index) => {
+    const item = document.createElement("div");
+    item.className = "saved-list-item";
+
+    const loadButton = document.createElement("button");
+    loadButton.className = "saved-list-load";
+    loadButton.textContent = list.name;
+
+    loadButton.addEventListener("click", () => {
+      batchPayments.value = list.rows.join("\n");
+      updateCsvPreview(list.rows);
+      batchPayments.hidden = true;
+      savedListsPanel.hidden = true;
+      batchMessage.textContent = list.name + " loaded.";
+    });
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "saved-list-delete";
+    deleteButton.textContent = "×";
+    deleteButton.setAttribute("aria-label", "Delete " + list.name);
+
+    deleteButton.addEventListener("click", () => {
+      const updatedLists = getSavedLists();
+      updatedLists.splice(index, 1);
+      saveSavedLists(updatedLists);
+      renderSavedLists();
+    });
+
+    item.append(loadButton, deleteButton);
+    content.appendChild(item);
+  });
+}
+
+renderSavedLists();
+
+
+const savedCsvFile = document.getElementById("savedCsvFile");
+
+const savedListName = document.getElementById("savedListName");
+const savedCsvName = document.getElementById("savedCsvName");
+const saveCsvButton = document.getElementById("saveCsvButton");
+
+function updateSaveCsvButton() {
+  saveCsvButton.disabled =
+    !savedListName.value.trim() ||
+    !savedCsvFile.files[0];
+}
+
+savedListName.addEventListener("input", updateSaveCsvButton);
+
+savedCsvFile.addEventListener("change", () => {
+  const file = savedCsvFile.files[0];
+
+  if (!file) {
+    savedCsvName.textContent = "";
+  } else {
+    savedCsvName.textContent = file.name;
+  }
+
+  updateSaveCsvButton();
+});
+
+saveCsvButton.addEventListener("click", async () => {
+  try {
+    if (!walletAddress) {
+      throw new Error("Connect wallet before saving a CSV.");
+    }
+
+    const name = savedListName.value.trim();
+
+    if (!name) {
+      throw new Error("Enter a name for this saved list.");
+    }
+
+    const file = savedCsvFile.files[0];
+
+    if (!file) {
+      throw new Error("Choose a CSV file first.");
+    }
+
+    const text = await file.text();
+
+    const lines = text
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(Boolean);
+
+    if (lines.length === 0) {
+      throw new Error("CSV file is empty.");
+    }
+
+    let start = 0;
+
+    if (lines[0].toLowerCase() === "recipient,amount") {
+      start = 1;
+    }
+
+    const rows = lines.slice(start);
+
+    if (rows.length === 0) {
+      throw new Error("CSV contains no recipients.");
+    }
+
+    if (rows.length > 100) {
+      throw new Error("Maximum 100 recipients allowed.");
+    }
+
+    const validRows = [];
+
+    for (const line of rows) {
+      const parts = line.replace(/^"|"$/g, "").split(",");
+
+      if (parts.length !== 2) {
+        throw new Error(`Invalid CSV row: ${line}`);
+      }
+
+      const address = parts[0].trim();
+      const amount = parts[1].trim();
+
+      if (!isAddress(address)) {
+        throw new Error(`Invalid wallet address: ${address}`);
+      }
+
+      if (!amount || Number(amount) <= 0) {
+        throw new Error(`Invalid amount: ${amount}`);
+      }
+
+      validRows.push(`${address},${amount}`);
+    }
+
+    const lists = getSavedLists();
+
+    lists.push({
+      name,
+      fileName: file.name,
+      rows: validRows
+    });
+
+    saveSavedLists(lists);
+    renderSavedLists();
+
+    batchPayments.value = validRows.join("\n");
+    updateCsvPreview(validRows);
+    batchPayments.hidden = true;
+
+    csvSummary.textContent =
+      `${validRows.length} recipient(s) loaded successfully.`;
+
+    batchMessage.textContent =
+      `${name} saved to this wallet.`;
+
+    savedListName.value = "";
+    savedCsvFile.value = "";
+    savedCsvName.textContent = "";
+    saveCsvButton.disabled = true;
+
+  } catch (error) {
+    batchMessage.textContent =
+      error?.message || "Failed to save CSV.";
+  }
+});
+
