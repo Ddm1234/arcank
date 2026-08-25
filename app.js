@@ -120,6 +120,7 @@ connectButton.addEventListener("click", async () => {
     });
 
     walletAddress = accounts[0];
+    clearLoadedSavedLists();
 
     adapter = await createViemAdapterFromProvider({
       provider: walletProvider
@@ -644,7 +645,6 @@ function renderSavedLists() {
   });
 }
 
-clearLoadedSavedLists();
 renderSavedLists();
 
 
