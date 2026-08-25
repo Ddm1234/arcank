@@ -655,3 +655,23 @@ input[type="file"] {
   font-weight: 500 !important;
 }
 
+
+.saved-list-item {
+  min-height: 48px;
+  margin-bottom: 6px;
+  padding: 7px 9px;
+  gap: 8px;
+  border-radius: 10px;
+}
+
+.saved-list-info {
+  gap: 2px;
+}
+
+.saved-list-load {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
