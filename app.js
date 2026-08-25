@@ -17,6 +17,10 @@ const batchPayments = document.getElementById("batchPayments");
 const batchMessage = document.getElementById("batchMessage");
 const csvFile = document.getElementById("csvFile");
 const csvSummary = document.getElementById("csvSummary");
+const csvPreview = document.getElementById("csvPreview");
+const csvPreviewList = document.getElementById("csvPreviewList");
+const csvRecipientCount = document.getElementById("csvRecipientCount");
+const csvTotalAmount = document.getElementById("csvTotalAmount");
 
 const BATCH_CONTRACT = "0xB15C4f77234f8e03AbB564834e3FbFc15aAe60d0";
 const USDC_CONTRACT = "0x3600000000000000000000000000000000000000";
@@ -44,6 +48,33 @@ function generateWalletAvatar(address) {
   walletAvatar.innerHTML = html;
 }
 
+function updateCsvPreview(rows) {
+  csvPreviewList.innerHTML = "";
+  let total = 0;
+
+  rows.forEach(row => {
+    const [address, amount] = row.split(",");
+    total += Number(amount);
+
+    const item = document.createElement("div");
+    item.className = "csv-preview-row";
+
+    const addressEl = document.createElement("span");
+    addressEl.className = "csv-preview-address";
+    addressEl.textContent = address.slice(0, 6) + "..." + address.slice(-4);
+
+    const amountEl = document.createElement("span");
+    amountEl.className = "csv-preview-amount";
+    amountEl.textContent = amount + " USDC";
+
+    item.append(addressEl, amountEl);
+    csvPreviewList.appendChild(item);
+  });
+
+  csvRecipientCount.textContent = rows.length + " recipient" + (rows.length === 1 ? "" : "s");
+  csvTotalAmount.textContent = total.toLocaleString(undefined, { maximumFractionDigits: 6 }) + " USDC";
+  csvPreview.hidden = false;
+}
 connectButton.addEventListener("click", async () => {
   try {
     message.textContent = "Connecting wallet...";
@@ -411,15 +442,20 @@ csvFile.addEventListener("change", async () => {
     }
 
     batchPayments.value = validRows.join("\n");
+    updateCsvPreview(validRows);
 
     csvSummary.textContent =
       `${validRows.length} recipient(s) loaded successfully.`;
 
     batchMessage.textContent =
-      "CSV loaded. Review the batch and press Send Batch Payment.";
+      "CSV loaded. Review the batch and press Send Batch.";
 
   } catch (error) {
     csvSummary.textContent = "";
+    csvPreview.hidden = true;
+    csvPreviewList.innerHTML = "";
+    csvRecipientCount.textContent = "";
+    csvTotalAmount.textContent = "0 USDC";
     batchPayments.value = "";
     batchMessage.textContent =
       error?.message || "Failed to read CSV.";

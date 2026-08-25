@@ -64,6 +64,17 @@
       >
 
       <p id="csvSummary"></p>
+      <div id="csvPreview" hidden>
+        <div class="csv-preview-header">
+          <strong>Batch Preview</strong>
+          <span id="csvRecipientCount"></span>
+        </div>
+        <div id="csvPreviewList"></div>
+        <div class="csv-preview-total">
+          <span>Total</span>
+          <strong id="csvTotalAmount">0 USDC</strong>
+        </div>
+      </div>
 
       <label for="batchPayments">Recipients and amounts</label>
       <textarea
