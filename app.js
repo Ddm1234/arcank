@@ -630,46 +630,29 @@ renderSavedLists();
 
 const savedCsvFile = document.getElementById("savedCsvFile");
 
-const savedListName = document.getElementById("savedListName");
-const savedCsvName = document.getElementById("savedCsvName");
-const saveCsvButton = document.getElementById("saveCsvButton");
+const savedCsvNameOverlay =
+  document.getElementById("savedCsvNameOverlay");
 
-function updateSaveCsvButton() {
-  saveCsvButton.disabled =
-    !savedListName.value.trim() ||
-    !savedCsvFile.files[0];
-}
+const savedCsvNameInput =
+  document.getElementById("savedCsvNameInput");
 
-savedListName.addEventListener("input", updateSaveCsvButton);
+const cancelSavedCsvName =
+  document.getElementById("cancelSavedCsvName");
 
-savedCsvFile.addEventListener("change", () => {
-  const file = savedCsvFile.files[0];
+const confirmSavedCsvName =
+  document.getElementById("confirmSavedCsvName");
 
-  if (!file) {
-    savedCsvName.textContent = "";
-  } else {
-    savedCsvName.textContent = file.name;
-  }
+let pendingCsvRows = null;
+let pendingCsvFileName = "";
 
-  updateSaveCsvButton();
-});
-
-saveCsvButton.addEventListener("click", async () => {
+savedCsvFile.addEventListener("change", async () => {
   try {
-    if (!walletAddress) {
-      throw new Error("Connect wallet before saving a CSV.");
-    }
-
-    const name = savedListName.value.trim();
-
-    if (!name) {
-      throw new Error("Enter a name for this saved list.");
-    }
-
     const file = savedCsvFile.files[0];
 
-    if (!file) {
-      throw new Error("Choose a CSV file first.");
+    if (!file) return;
+
+    if (!walletAddress) {
+      throw new Error("Connect wallet before saving a CSV.");
     }
 
     const text = await file.text();
@@ -722,35 +705,90 @@ saveCsvButton.addEventListener("click", async () => {
       validRows.push(`${address},${amount}`);
     }
 
+    pendingCsvRows = validRows;
+    pendingCsvFileName = file.name;
+
+    savedCsvNameInput.value =
+      file.name.replace(/\.csv$/i, "");
+
+    savedCsvNameOverlay.hidden = false;
+
+    setTimeout(() => {
+      savedCsvNameInput.focus();
+      savedCsvNameInput.select();
+    }, 50);
+
+  } catch (error) {
+    batchMessage.textContent =
+      error?.message || "Failed to read CSV.";
+
+    savedCsvFile.value = "";
+    pendingCsvRows = null;
+  }
+});
+
+function closeSavedCsvNameDialog() {
+  savedCsvNameOverlay.hidden = true;
+  savedCsvFile.value = "";
+  pendingCsvRows = null;
+  pendingCsvFileName = "";
+}
+
+cancelSavedCsvName.addEventListener(
+  "click",
+  closeSavedCsvNameDialog
+);
+
+confirmSavedCsvName.addEventListener("click", () => {
+  try {
+    if (!walletAddress) {
+      throw new Error("Connect wallet before saving a CSV.");
+    }
+
+    if (!pendingCsvRows) {
+      throw new Error("Choose a CSV file first.");
+    }
+
+    const name = savedCsvNameInput.value.trim();
+
+    if (!name) {
+      throw new Error("Enter a name for this saved list.");
+    }
+
     const lists = getSavedLists();
+
+    if (
+      lists.some(
+        list => list.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      throw new Error("A saved list with that name already exists.");
+    }
 
     lists.push({
       name,
-      fileName: file.name,
-      rows: validRows
+      fileName: pendingCsvFileName,
+      rows: pendingCsvRows,
+      loaded: false
     });
 
     saveSavedLists(lists);
     renderSavedLists();
 
-    batchPayments.value = validRows.join("\n");
-    updateCsvPreview(validRows);
-    batchPayments.hidden = true;
-
-    csvSummary.textContent =
-      `${validRows.length} recipient(s) loaded successfully.`;
-
     batchMessage.textContent =
       `${name} saved to this wallet.`;
 
-    savedListName.value = "";
-    savedCsvFile.value = "";
-    savedCsvName.textContent = "";
-    saveCsvButton.disabled = true;
+    closeSavedCsvNameDialog();
 
   } catch (error) {
     batchMessage.textContent =
       error?.message || "Failed to save CSV.";
+  }
+});
+
+savedCsvNameOverlay.addEventListener("click", event => {
+  if (event.target === savedCsvNameOverlay) {
+    closeSavedCsvNameDialog();
   }
 });
 

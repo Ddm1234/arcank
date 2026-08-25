@@ -22,27 +22,31 @@
     </div>
 
     <div class="saved-list-save">
-      <label for="savedListName">List name</label>
+      <label for="savedCsvFile" class="saved-csv-upload">
+        ＋ Add CSV
+      </label>
+      <input id="savedCsvFile" type="file" accept=".csv,text/csv" hidden>
+    </div>
+  </aside>
+  <div id="savedCsvNameOverlay" class="saved-list-action-overlay" hidden>
+    <div class="saved-list-action-dialog">
+      <strong>Name your CSV</strong>
+
       <input
-        id="savedListName"
+        id="savedCsvNameInput"
         type="text"
-        placeholder="e.g. Family"
         maxlength="50"
+        placeholder="e.g. Family"
         autocomplete="off"
       >
 
-      <label for="savedCsvFile" class="saved-csv-upload">
-        ＋ Choose CSV
-      </label>
-      <input id="savedCsvFile" type="file" accept=".csv,text/csv" hidden>
-
-      <p id="savedCsvName"></p>
-
-      <button id="saveCsvButton" disabled>
-        Save List
-      </button>
+      <div class="saved-list-dialog-actions">
+        <button id="cancelSavedCsvName">Cancel</button>
+        <button id="confirmSavedCsvName">Save</button>
+      </div>
     </div>
-  </aside>
+  </div>
+
   <div id="savedListRenameOverlay" class="saved-list-action-overlay" hidden>
     <div class="saved-list-action-dialog">
       <strong>Rename saved list</strong>
