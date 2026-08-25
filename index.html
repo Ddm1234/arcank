@@ -7,10 +7,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button id="savedListsButton" class="saved-lists-button" aria-label="Open saved lists">
-    ☰
-  </button>
-
   <aside id="savedListsPanel" class="saved-lists-panel" hidden>
     <div class="saved-lists-header">
       <strong>CSV Lists</strong>
@@ -108,9 +104,15 @@
   <main class="container">
     <section class="card">
 
-      <p class="eyebrow">ARC TESTNET</p>
-      <h1>ArcPay</h1>
-      <p class="subtitle">Simple USDC payments on Arc Testnet.</p>
+      <header class="homepage-header">
+        <button id="savedListsButton" class="saved-lists-button" aria-label="Open saved lists">
+          ☰
+        </button>
+        <div class="homepage-header-text">
+          <h1>ArcPay</h1>
+          <p class="subtitle">Simple USDC payments on Arc Testnet.</p>
+        </div>
+      </header>
 
       <button id="connectButton">Connect Wallet</button>
       <p id="walletStatus">Wallet not connected</p>
