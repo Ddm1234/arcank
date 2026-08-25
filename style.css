@@ -686,3 +686,12 @@ input[type="file"] {
   margin-left: auto;
 }
 
+
+.saved-lists-header strong {
+  color: #111 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
