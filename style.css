@@ -622,3 +622,17 @@ input[type="file"] {
   margin-bottom: 16px;
 }
 
+
+.saved-list-action-dialog > strong {
+  color: #111 !important;
+  background: #fff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  text-align: center;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4;
+  padding: 4px 0 16px !important;
+}
+
