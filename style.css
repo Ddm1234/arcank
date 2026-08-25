@@ -813,3 +813,8 @@ input[type="file"] {
   margin-top: 0 !important;
 }
 
+
+#savedListsContent {
+  padding-right: 8px !important;
+}
+
