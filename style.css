@@ -591,3 +591,12 @@ input[type="file"] {
 .saved-list-action-overlay[hidden] {
   display: none !important;
 }
+
+.saved-list-action-overlay {
+  align-items: flex-start !important;
+  justify-content: center;
+  padding-top: 10vh !important;
+  padding-bottom: 20px;
+  overflow-y: auto;
+}
+
