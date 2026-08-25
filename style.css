@@ -646,3 +646,12 @@ input[type="file"] {
   line-height: 1.4;
 }
 
+
+.saved-list-info span {
+  color: #555 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+}
+
