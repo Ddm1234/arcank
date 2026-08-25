@@ -539,7 +539,6 @@ function clearLoadedSavedLists() {
 }
 
 function renderSavedLists() {
-  clearLoadedSavedLists();
   const content = document.getElementById("savedListsContent");
 
   if (!walletAddress) {
@@ -646,6 +645,7 @@ function renderSavedLists() {
   });
 }
 
+clearLoadedSavedLists();
 renderSavedLists();
 
 
