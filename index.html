@@ -43,6 +43,64 @@
       </button>
     </div>
   </aside>
+  <div id="savedListRenameOverlay" class="saved-list-action-overlay" hidden>
+    <div class="saved-list-action-dialog">
+      <strong>Rename saved list</strong>
+
+      <input
+        id="savedListRenameInput"
+        type="text"
+        maxlength="50"
+        autocomplete="off"
+      >
+
+      <div class="saved-list-dialog-actions">
+        <button id="cancelSavedListRename">
+          Cancel
+        </button>
+
+        <button id="confirmSavedListRename">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="savedListDeleteOverlay" class="saved-list-action-overlay" hidden>
+    <div class="saved-list-action-dialog">
+      <strong>Delete saved list?</strong>
+      <p id="savedListDeleteText"></p>
+
+      <div class="saved-list-dialog-actions">
+        <button id="cancelSavedListDelete">
+          Cancel
+        </button>
+
+        <button id="confirmSavedListDelete">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="savedListActionOverlay" class="saved-list-action-overlay" hidden>
+    <div class="saved-list-action-dialog">
+      <strong id="savedListActionTitle"></strong>
+
+      <button id="renameSavedListButton">
+        Rename
+      </button>
+
+      <button id="deleteSavedListButton">
+        Delete
+      </button>
+
+      <button id="cancelSavedListAction">
+        Cancel
+      </button>
+    </div>
+  </div>
+
   <main class="container">
     <section class="card">
 

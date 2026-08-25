@@ -453,26 +453,72 @@ input[type="file"] {
 .saved-list-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
   width: 100%;
+  min-height: 64px;
   margin-bottom: 8px;
+  padding: 11px 12px;
+  box-sizing: border-box;
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.12s ease;
+}
+
+.saved-list-item:active {
+  transform: scale(0.98);
+}
+
+.saved-list-loaded {
+  background: #e9f7ef;
+  border-color: #65b98a;
+}
+
+.saved-list-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.saved-list-info strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+.saved-list-info span {
+  font-size: 12px;
+  opacity: 0.65;
 }
 
 .saved-list-load {
-  flex: 1;
-  text-align: left;
-  margin: 0;
-}
-
-.saved-list-delete {
-  width: 36px;
-  height: 36px;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
   margin: 0;
   padding: 0;
-  flex-shrink: 0;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.saved-list-loaded .saved-list-load {
+  display: none;
 }
 
 .saved-list-save {
+
   margin-top: 24px;
 }
 
@@ -500,3 +546,45 @@ input[type="file"] {
   white-space: nowrap;
 }
 
+
+.saved-list-action-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 18px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.saved-list-action-dialog {
+  width: min(360px, 100%);
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+.saved-list-action-dialog strong {
+  display: block;
+  padding: 8px 8px 14px;
+  font-size: 16px;
+}
+
+.saved-list-action-dialog button {
+  width: 100%;
+  margin: 4px 0;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+#deleteSavedListButton {
+  color: #b42318;
+}
+
+#cancelSavedListAction {
+  margin-top: 10px;
+}

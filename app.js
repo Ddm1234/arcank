@@ -539,31 +539,88 @@ function renderSavedLists() {
     const item = document.createElement("div");
     item.className = "saved-list-item";
 
-    const loadButton = document.createElement("button");
-    loadButton.className = "saved-list-load";
-    loadButton.textContent = list.name;
+    if (list.loaded) {
+      item.classList.add("saved-list-loaded");
+    }
 
-    loadButton.addEventListener("click", () => {
-      batchPayments.value = list.rows.join("\n");
-      updateCsvPreview(list.rows);
-      batchPayments.hidden = true;
-      savedListsPanel.hidden = true;
-      batchMessage.textContent = list.name + " loaded.";
+    const info = document.createElement("div");
+    info.className = "saved-list-info";
+
+    const name = document.createElement("strong");
+    name.textContent = list.name;
+
+    const count = document.createElement("span");
+    count.textContent =
+      list.rows.length +
+      " recipient" +
+      (list.rows.length === 1 ? "" : "s");
+
+    info.append(name, count);
+    item.appendChild(info);
+
+    if (!list.loaded) {
+      const loadButton = document.createElement("button");
+      loadButton.className = "saved-list-load";
+      loadButton.textContent = "🔁";
+      loadButton.setAttribute("aria-label", "Load " + list.name);
+
+      loadButton.addEventListener("click", event => {
+        event.stopPropagation();
+
+        const updatedLists = getSavedLists();
+
+        updatedLists.forEach(saved => {
+          saved.loaded = false;
+        });
+
+        const selected = updatedLists[index];
+        selected.loaded = true;
+
+        updatedLists.splice(index, 1);
+        updatedLists.unshift(selected);
+
+        saveSavedLists(updatedLists);
+
+        batchPayments.value = selected.rows.join("\n");
+        updateCsvPreview(selected.rows);
+        batchPayments.hidden = true;
+        savedListsPanel.hidden = true;
+        batchMessage.textContent = selected.name + " loaded.";
+
+        renderSavedLists();
+      });
+
+      item.appendChild(loadButton);
+    }
+
+    let pressTimer = null;
+
+    item.addEventListener("pointerdown", event => {
+      if (event.target.closest("button")) return;
+
+      pressTimer = setTimeout(() => {
+        const currentLists = getSavedLists();
+        const currentIndex = currentLists.findIndex(
+          saved => saved.name === list.name
+        );
+
+        if (currentIndex === -1) return;
+
+        openSavedListActionMenu(list);
+      }, 700);
     });
 
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "saved-list-delete";
-    deleteButton.textContent = "×";
-    deleteButton.setAttribute("aria-label", "Delete " + list.name);
+    const cancelPress = () => {
+      if (pressTimer) {
+        clearTimeout(pressTimer);
+        pressTimer = null;
+      }
+    };
 
-    deleteButton.addEventListener("click", () => {
-      const updatedLists = getSavedLists();
-      updatedLists.splice(index, 1);
-      saveSavedLists(updatedLists);
-      renderSavedLists();
-    });
+    item.addEventListener("pointerup", cancelPress);
+    item.addEventListener("pointerleave", cancelPress);
+    item.addEventListener("pointercancel", cancelPress);
 
-    item.append(loadButton, deleteButton);
     content.appendChild(item);
   });
 }
