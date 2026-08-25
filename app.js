@@ -5,6 +5,7 @@ import { createViemAdapterFromProvider } from "@circle-fin/adapter-viem-v2";
 const connectButton = document.getElementById("connectButton");
 const sendButton = document.getElementById("sendButton");
 const walletStatus = document.getElementById("walletStatus");
+const disconnectButton = document.getElementById("disconnectButton");
 const recipientInput = document.getElementById("recipient");
 const amountInput = document.getElementById("amount");
 const message = document.getElementById("message");
@@ -82,6 +83,7 @@ connectButton.addEventListener("click", async () => {
       walletAddress.slice(-4);
 
     connectButton.textContent = "Wallet Connected";
+    disconnectButton.hidden = false;
     sendButton.disabled = false;
     batchSendButton.disabled = false;
     message.textContent = "Ready to send USDC on Arc Testnet.";
@@ -401,4 +403,19 @@ csvFile.addEventListener("change", async () => {
       error?.message || "Failed to read CSV.";
     csvFile.value = "";
   }
+});
+
+disconnectButton.addEventListener("click", () => {
+  walletProvider = null;
+  walletAddress = null;
+  adapter = null;
+
+  walletStatus.textContent = "Wallet not connected";
+  connectButton.textContent = "Connect Wallet";
+  disconnectButton.hidden = true;
+
+  sendButton.disabled = true;
+  batchSendButton.disabled = true;
+
+  message.textContent = "Wallet disconnected.";
 });
