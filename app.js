@@ -6,6 +6,9 @@ const connectButton = document.getElementById("connectButton");
 const sendButton = document.getElementById("sendButton");
 const walletStatus = document.getElementById("walletStatus");
 const disconnectButton = document.getElementById("disconnectButton");
+const walletProfile = document.getElementById("walletProfile");
+const walletAvatar = document.getElementById("walletAvatar");
+const walletShortAddress = document.getElementById("walletShortAddress");
 const recipientInput = document.getElementById("recipient");
 const amountInput = document.getElementById("amount");
 const message = document.getElementById("message");
@@ -25,6 +28,21 @@ let walletAddress = null;
 let adapter = null;
 
 const kit = new AppKit();
+function generateWalletAvatar(address) {
+  const hash = address.slice(2).toLowerCase();
+  let html = "<div style=\"display:grid;grid-template-columns:repeat(5,1fr);width:100%;height:100%;gap:2px;padding:5px;\">";
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col < 5; col++) {
+      const sourceCol = col > 2 ? 4 - col : col;
+      const index = (row * 3 + sourceCol) % hash.length;
+      const value = parseInt(hash[index], 16);
+      const active = value % 2 === 0;
+      html += "<span style=\"border-radius:2px;background:" + (active ? "#f5f7fa" : "transparent") + ";\"></span>";
+    }
+  }
+  html += "</div>";
+  walletAvatar.innerHTML = html;
+}
 
 connectButton.addEventListener("click", async () => {
   try {
@@ -85,6 +103,9 @@ connectButton.addEventListener("click", async () => {
     connectButton.textContent = "Wallet Connected";
     connectButton.hidden = true;
     disconnectButton.hidden = false;
+    walletShortAddress.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
+    generateWalletAvatar(walletAddress);
+    walletProfile.hidden = false;
     sendButton.disabled = false;
     batchSendButton.disabled = false;
     message.textContent = "Ready to send USDC on Arc Testnet.";
@@ -415,6 +436,7 @@ disconnectButton.addEventListener("click", () => {
   connectButton.textContent = "Connect Wallet";
   connectButton.hidden = false;
   disconnectButton.hidden = true;
+  walletProfile.hidden = true;
 
   sendButton.disabled = true;
   batchSendButton.disabled = true;
