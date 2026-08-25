@@ -802,3 +802,14 @@ input[type="file"] {
   display: none !important;
 }
 
+
+.saved-list-save {
+  margin-top: 0 !important;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.saved-csv-upload {
+  margin-top: 0 !important;
+}
+
