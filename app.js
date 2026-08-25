@@ -152,6 +152,7 @@ sendButton.addEventListener("click", async () => {
   }
 });
 
+
 batchSendButton.addEventListener("click", async () => {
   try {
     if (!walletProvider || !walletAddress) {
@@ -175,9 +176,7 @@ batchSendButton.addEventListener("click", async () => {
       const parts = line.split(",");
 
       if (parts.length !== 2) {
-        throw new Error(
-          "Invalid line. Use: wallet-address,amount"
-        );
+        throw new Error("Use: wallet-address,amount");
       }
 
       const recipient = parts[0].trim();
@@ -199,7 +198,81 @@ batchSendButton.addEventListener("click", async () => {
     }
 
     batchMessage.textContent =
-      `Preparing batch of ${recipients.length} payment(s)...`;
+      `Preparing ${recipients.length} payment(s)...`;
+
+    const allowanceData = encodeFunctionData({
+      abi: [{
+        type: "function",
+        name: "allowance",
+        stateMutability: "view",
+        inputs: [
+          { name: "owner", type: "address" },
+          { name: "spender", type: "address" }
+        ],
+        outputs: [{ type: "uint256" }]
+      }],
+      functionName: "allowance",
+      args: [walletAddress, BATCH_CONTRACT]
+    });
+
+    const allowanceResult = await walletProvider.request({
+      method: "eth_call",
+      params: [{
+        to: USDC_CONTRACT,
+        data: allowanceData
+      }, "latest"]
+    });
+
+    const allowance = BigInt(allowanceResult);
+
+    if (allowance < total) {
+      batchMessage.textContent =
+        "USDC approval required. Confirm it in your wallet...";
+
+      const approveData = encodeFunctionData({
+        abi: [{
+          type: "function",
+          name: "approve",
+          stateMutability: "nonpayable",
+          inputs: [
+            { name: "spender", type: "address" },
+            { name: "amount", type: "uint256" }
+          ],
+          outputs: [{ type: "bool" }]
+        }],
+        functionName: "approve",
+        args: [BATCH_CONTRACT, total]
+      });
+
+      const approvalTx = await walletProvider.request({
+        method: "eth_sendTransaction",
+        params: [{
+          from: walletAddress,
+          to: USDC_CONTRACT,
+          data: approveData
+        }]
+      });
+
+      batchMessage.textContent =
+        "Approval submitted. Waiting for confirmation...";
+
+      let receipt = null;
+
+      while (!receipt) {
+        receipt = await walletProvider.request({
+          method: "eth_getTransactionReceipt",
+          params: [approvalTx]
+        });
+
+        if (!receipt) {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      }
+
+      if (receipt.status !== "0x1") {
+        throw new Error("USDC approval failed.");
+      }
+    }
 
     const batchData = encodeFunctionData({
       abi: [{
@@ -207,14 +280,8 @@ batchSendButton.addEventListener("click", async () => {
         name: "batchTransfer",
         stateMutability: "nonpayable",
         inputs: [
-          {
-            name: "recipients",
-            type: "address[]"
-          },
-          {
-            name: "amounts",
-            type: "uint256[]"
-          }
+          { name: "recipients", type: "address[]" },
+          { name: "amounts", type: "uint256[]" }
         ],
         outputs: []
       }],
@@ -238,6 +305,8 @@ batchSendButton.addEventListener("click", async () => {
       'Batch payment submitted. <a href="https://testnet.arcscan.app/tx/' +
       txHash +
       '" target="_blank" rel="noopener noreferrer">View transaction</a>';
+
+    batchPayments.value = "";
 
     console.log("Batch transaction:", txHash);
 
