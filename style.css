@@ -768,3 +768,37 @@ input[type="file"] {
   padding-bottom: 20px;
 }
 
+
+.saved-lists-panel {
+  z-index: 2000;
+}
+
+.saved-lists-button {
+  z-index: 1999;
+}
+
+.saved-lists-panel[hidden] {
+  display: none !important;
+}
+
+.saved-lists-panel:not([hidden]) + * {
+  pointer-events: auto;
+}
+
+
+.saved-lists-header {
+  position: relative;
+  z-index: 10;
+}
+
+.saved-lists-header button {
+  position: relative;
+  z-index: 11;
+  pointer-events: auto !important;
+}
+
+
+.saved-lists-button[hidden] {
+  display: none !important;
+}
+
