@@ -614,9 +614,12 @@ function renderSavedLists() {
     }
 
     let pressTimer = null;
+    let longPressTriggered = false;
 
     item.addEventListener("pointerdown", event => {
       if (event.target.closest("button")) return;
+
+      longPressTriggered = false;
 
       pressTimer = setTimeout(() => {
         const currentLists = getSavedLists();
@@ -626,6 +629,7 @@ function renderSavedLists() {
 
         if (currentIndex === -1) return;
 
+        longPressTriggered = true;
         openSavedListActionMenu(list);
       }, 700);
     });
@@ -638,7 +642,6 @@ function renderSavedLists() {
     };
 
     item.addEventListener("pointerup", cancelPress);
-    item.addEventListener("pointerleave", cancelPress);
     item.addEventListener("pointercancel", cancelPress);
 
     content.appendChild(item);
