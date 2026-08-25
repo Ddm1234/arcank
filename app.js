@@ -651,6 +651,165 @@ function renderSavedLists() {
 renderSavedLists();
 
 
+const savedListActionOverlay =
+  document.getElementById("savedListActionOverlay");
+
+const savedListActionTitle =
+  document.getElementById("savedListActionTitle");
+
+const renameSavedListButton =
+  document.getElementById("renameSavedListButton");
+
+const deleteSavedListButton =
+  document.getElementById("deleteSavedListButton");
+
+const cancelSavedListAction =
+  document.getElementById("cancelSavedListAction");
+
+const savedListRenameOverlay =
+  document.getElementById("savedListRenameOverlay");
+
+const savedListRenameInput =
+  document.getElementById("savedListRenameInput");
+
+const cancelSavedListRename =
+  document.getElementById("cancelSavedListRename");
+
+const confirmSavedListRename =
+  document.getElementById("confirmSavedListRename");
+
+const savedListDeleteOverlay =
+  document.getElementById("savedListDeleteOverlay");
+
+const savedListDeleteText =
+  document.getElementById("savedListDeleteText");
+
+const cancelSavedListDelete =
+  document.getElementById("cancelSavedListDelete");
+
+const confirmSavedListDelete =
+  document.getElementById("confirmSavedListDelete");
+
+let activeSavedList = null;
+
+function openSavedListActionMenu(list) {
+  activeSavedList = list;
+  savedListActionTitle.textContent = list.name;
+  savedListActionOverlay.hidden = false;
+}
+
+function closeSavedListActionMenu() {
+  savedListActionOverlay.hidden = true;
+  activeSavedList = null;
+}
+
+cancelSavedListAction.addEventListener("click", closeSavedListActionMenu);
+
+savedListActionOverlay.addEventListener("click", event => {
+  if (event.target === savedListActionOverlay) {
+    closeSavedListActionMenu();
+  }
+});
+
+renameSavedListButton.addEventListener("click", () => {
+  if (!activeSavedList) return;
+
+  savedListRenameInput.value = activeSavedList.name;
+  savedListActionOverlay.hidden = true;
+  savedListRenameOverlay.hidden = false;
+
+  setTimeout(() => {
+    savedListRenameInput.focus();
+    savedListRenameInput.select();
+  }, 50);
+});
+
+cancelSavedListRename.addEventListener("click", () => {
+  savedListRenameOverlay.hidden = true;
+  activeSavedList = null;
+});
+
+confirmSavedListRename.addEventListener("click", () => {
+  if (!activeSavedList) return;
+
+  const newName = savedListRenameInput.value.trim();
+
+  if (!newName) {
+    batchMessage.textContent = "Enter a name for this saved list.";
+    return;
+  }
+
+  const lists = getSavedLists();
+
+  if (
+    lists.some(
+      list =>
+        list !== activeSavedList &&
+        list.name.toLowerCase() === newName.toLowerCase()
+    )
+  ) {
+    batchMessage.textContent =
+      "A saved list with that name already exists.";
+    return;
+  }
+
+  const target = lists.find(list => list.name === activeSavedList.name);
+
+  if (target) {
+    target.name = newName;
+    saveSavedLists(lists);
+    renderSavedLists();
+  }
+
+  savedListRenameOverlay.hidden = true;
+  activeSavedList = null;
+});
+
+savedListRenameOverlay.addEventListener("click", event => {
+  if (event.target === savedListRenameOverlay) {
+    savedListRenameOverlay.hidden = true;
+    activeSavedList = null;
+  }
+});
+
+deleteSavedListButton.addEventListener("click", () => {
+  if (!activeSavedList) return;
+
+  savedListDeleteText.textContent =
+    `Delete "${activeSavedList.name}"?`;
+
+  savedListActionOverlay.hidden = true;
+  savedListDeleteOverlay.hidden = false;
+});
+
+cancelSavedListDelete.addEventListener("click", () => {
+  savedListDeleteOverlay.hidden = true;
+  activeSavedList = null;
+});
+
+confirmSavedListDelete.addEventListener("click", () => {
+  if (!activeSavedList) return;
+
+  const lists = getSavedLists();
+
+  const remaining = lists.filter(
+    list => list.name !== activeSavedList.name
+  );
+
+  saveSavedLists(remaining);
+  renderSavedLists();
+
+  savedListDeleteOverlay.hidden = true;
+  activeSavedList = null;
+});
+
+savedListDeleteOverlay.addEventListener("click", event => {
+  if (event.target === savedListDeleteOverlay) {
+    savedListDeleteOverlay.hidden = true;
+    activeSavedList = null;
+  }
+});
+
 const savedCsvFile = document.getElementById("savedCsvFile");
 
 const savedCsvNameOverlay =
