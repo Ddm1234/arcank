@@ -600,3 +600,16 @@ input[type="file"] {
   overflow-y: auto;
 }
 
+
+.saved-list-dialog-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.saved-list-dialog-actions button {
+  flex: 1;
+  margin: 0;
+}
+
