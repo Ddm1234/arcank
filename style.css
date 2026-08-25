@@ -256,3 +256,8 @@ input[type="file"] {
   margin-top: 16px;
 }
 
+
+#connectButton[hidden],
+#disconnectButton[hidden] {
+  display: none;
+}
