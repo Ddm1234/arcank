@@ -818,3 +818,64 @@ input[type="file"] {
   padding-right: 8px !important;
 }
 
+
+/* Homepage ArcPay header */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card .eyebrow {
+  background: #000 !important;
+  color: #fff !important;
+  margin: -28px -28px 0 !important;
+  padding: 16px 58px 4px 20px !important;
+  font-size: 11px !important;
+  letter-spacing: 2px;
+}
+
+.card h1 {
+  background: #000 !important;
+  color: #fff !important;
+  margin: 0 -28px !important;
+  padding: 0 58px 4px 20px !important;
+  font-size: 28px !important;
+}
+
+.card .subtitle {
+  background: #000 !important;
+  color: #c5c5c5 !important;
+  margin: 0 -28px 24px !important;
+  padding: 0 58px 16px 20px !important;
+}
+
+.saved-lists-button {
+  top: 18px !important;
+  left: auto !important;
+  right: 18px !important;
+  z-index: 2001 !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  color: #000 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 520px) {
+  .card .eyebrow {
+    margin-left: -22px !important;
+    margin-right: -22px !important;
+  }
+
+  .card h1 {
+    margin-left: -22px !important;
+    margin-right: -22px !important;
+  }
+
+  .card .subtitle {
+    margin-left: -22px !important;
+    margin-right: -22px !important;
+  }
+}
+
