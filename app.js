@@ -294,10 +294,18 @@ batchSendButton.addEventListener("click", async () => {
     batchMessage.textContent =
       "Confirm the batch transaction in your wallet...";
 
+    const gasEstimate = await walletProvider.request({
+      method: "eth_estimateGas",
+      params: [{
+        from: walletAddress,
+        to: BATCH_CONTRACT,
+        data: batchData
+      }]
+    });
     const txHash = await walletProvider.request({
       method: "eth_sendTransaction",
       params: [{
-        from: walletAddress,
+        from: walletAddress, gas: gasEstimate,
         to: BATCH_CONTRACT,
         data: batchData
       }]
