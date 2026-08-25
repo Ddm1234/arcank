@@ -215,3 +215,44 @@ input[type="file"] {
 #walletProfile[hidden] {
   display: none;
 }
+
+/* Wallet controls */
+#connectButton,
+#disconnectButton {
+  width: auto;
+  min-width: 170px;
+  padding: 11px 20px;
+  margin-top: 8px;
+  border-radius: 999px;
+  font-size: 14px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#connectButton {
+  background: #f5f7fa;
+  color: #0b0d10;
+  border: 1px solid #f5f7fa;
+}
+
+#disconnectButton {
+  background: transparent;
+  color: #ff6b6b;
+  border: 1px solid #5a2a2a;
+}
+
+#disconnectButton:hover {
+  background: #2a1515;
+}
+
+/* Payment buttons */
+#sendButton,
+#batchSendButton {
+  width: 100%;
+  min-width: 0;
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 16px;
+}
+
