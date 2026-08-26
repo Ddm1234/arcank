@@ -1286,3 +1286,10 @@ input[type="file"] {
   border-color: #dc2626;
 }
 
+
+#savedCsvNameOverlay .saved-list-action-dialog,
+#savedListRenameOverlay .saved-list-action-dialog,
+#savedListDeleteOverlay .saved-list-action-dialog {
+  background: #eef2ff !important;
+}
+
