@@ -707,6 +707,9 @@ const savedListRenameOverlay =
 const savedListRenameInput =
   document.getElementById("savedListRenameInput");
 
+const savedListRenameTitle =
+  document.getElementById("savedListRenameTitle");
+
 const confirmSavedListRename =
   document.getElementById("confirmSavedListRename");
 
@@ -742,6 +745,8 @@ renameSavedListButton.addEventListener("click", () => {
   if (!activeSavedList) return;
 
   savedListRenameInput.value = activeSavedList.name;
+  savedListRenameTitle.textContent =
+    "Rename: " + activeSavedList.name + ".csv";
   savedListActionOverlay.hidden = true;
   savedListRenameOverlay.hidden = false;
 
