@@ -1249,3 +1249,12 @@ input[type="file"] {
   right: 0 !important;
   gap: 4px !important;
 }
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateY(-50%) !important;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-action:last-child {
+  margin-right: 0 !important;
+}
