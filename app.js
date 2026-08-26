@@ -777,6 +777,14 @@ confirmSavedListRename.addEventListener("click", () => {
     return;
   }
 
+  if (newName.includes(".")) {
+    savedListRenameInput.setCustomValidity(
+      "Dots (.) are not allowed in CSV names."
+    );
+    savedListRenameInput.reportValidity();
+    return;
+  }
+
   const lists = getSavedLists();
 
   if (
