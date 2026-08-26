@@ -748,10 +748,14 @@ confirmSavedListRename.addEventListener("click", () => {
         list.name.toLowerCase() === newName.toLowerCase()
     )
   ) {
-    batchMessage.textContent =
-      "A saved list with that name already exists.";
+    savedListRenameInput.setCustomValidity(
+      "A CSV tab with this name already exists."
+    );
+    savedListRenameInput.reportValidity();
     return;
   }
+
+  savedListRenameInput.setCustomValidity("");
 
   const target = lists.find(list => list.name === activeSavedList.name);
 
