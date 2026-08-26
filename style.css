@@ -1205,3 +1205,31 @@ input[type="file"] {
   pointer-events: auto !important;
 }
 
+.saved-list-item.saved-list-actions-open .saved-list-load,
+.saved-list-item.saved-list-actions-open .saved-list-unload {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  top: 50% !important;
+  bottom: auto !important;
+  right: 52px !important;
+  left: auto !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.saved-list-slide-action {
+  width: 34px !important;
+  height: 34px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-toggle {
+  display: flex !important;
+  color: #16a34a !important;
+}
