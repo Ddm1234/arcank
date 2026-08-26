@@ -1185,3 +1185,23 @@ input[type="file"] {
   flex: 0 0 34px !important;
 }
 
+
+.saved-list-slide-actions {
+  right: 48px !important;
+  top: 50% !important;
+  bottom: auto !important;
+  left: auto !important;
+  height: 32px !important;
+  transform: translateX(120%) translateY(-50%) !important;
+  align-items: center !important;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  transform: translateX(0) translateY(-50%) !important;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-load {
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
