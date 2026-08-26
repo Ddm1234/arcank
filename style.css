@@ -991,3 +991,17 @@ input[type="file"] {
   margin-top: 10px;
 }
 
+
+.saved-list-action-dialog strong {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.saved-list-action-dialog input {
+  margin-bottom: 16px;
+}
+
+.saved-list-dialog-actions {
+  margin-top: 4px;
+}
+
