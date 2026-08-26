@@ -1245,3 +1245,7 @@ input[type="file"] {
 .saved-list-item.saved-list-actions-open .saved-list-slide-actions {
   right: 2px !important;
 }
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  right: 0 !important;
+  gap: 4px !important;
+}
