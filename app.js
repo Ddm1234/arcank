@@ -721,6 +721,7 @@ function renderSavedLists() {
 
     item.addEventListener("pointerdown", event => {
       if (event.target.closest("button")) return;
+      if (list.loaded) return;
 
       longPressTriggered = false;
 
