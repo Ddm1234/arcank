@@ -701,17 +701,11 @@ const renameSavedListButton =
 const deleteSavedListButton =
   document.getElementById("deleteSavedListButton");
 
-const cancelSavedListAction =
-  document.getElementById("cancelSavedListAction");
-
 const savedListRenameOverlay =
   document.getElementById("savedListRenameOverlay");
 
 const savedListRenameInput =
   document.getElementById("savedListRenameInput");
-
-const cancelSavedListRename =
-  document.getElementById("cancelSavedListRename");
 
 const confirmSavedListRename =
   document.getElementById("confirmSavedListRename");
@@ -721,9 +715,6 @@ const savedListDeleteOverlay =
 
 const savedListDeleteText =
   document.getElementById("savedListDeleteText");
-
-const cancelSavedListDelete =
-  document.getElementById("cancelSavedListDelete");
 
 const confirmSavedListDelete =
   document.getElementById("confirmSavedListDelete");
@@ -740,8 +731,6 @@ function closeSavedListActionMenu() {
   savedListActionOverlay.hidden = true;
   activeSavedList = null;
 }
-
-cancelSavedListAction.addEventListener("click", closeSavedListActionMenu);
 
 savedListActionOverlay.addEventListener("click", event => {
   if (event.target === savedListActionOverlay) {
@@ -760,11 +749,6 @@ renameSavedListButton.addEventListener("click", () => {
     savedListRenameInput.focus();
     savedListRenameInput.select();
   }, 50);
-});
-
-cancelSavedListRename.addEventListener("click", () => {
-  savedListRenameOverlay.hidden = true;
-  activeSavedList = null;
 });
 
 confirmSavedListRename.addEventListener("click", () => {
@@ -832,11 +816,6 @@ deleteSavedListButton.addEventListener("click", () => {
   savedListDeleteOverlay.hidden = false;
 });
 
-cancelSavedListDelete.addEventListener("click", () => {
-  savedListDeleteOverlay.hidden = true;
-  activeSavedList = null;
-});
-
 confirmSavedListDelete.addEventListener("click", () => {
   if (!activeSavedList) return;
 
@@ -871,9 +850,6 @@ const savedCsvNameInput =
 savedListRenameInput.addEventListener("input", () => {
   savedListRenameInput.setCustomValidity("");
 });
-
-const cancelSavedCsvName =
-  document.getElementById("cancelSavedCsvName");
 
 const confirmSavedCsvName =
   document.getElementById("confirmSavedCsvName");
@@ -973,11 +949,6 @@ function closeSavedCsvNameDialog() {
   pendingCsvRows = null;
   pendingCsvFileName = "";
 }
-
-cancelSavedCsvName.addEventListener(
-  "click",
-  closeSavedCsvNameDialog
-);
 
 confirmSavedCsvName.addEventListener("click", () => {
   try {
