@@ -572,6 +572,48 @@ function renderSavedLists() {
     const info = document.createElement("div");
     info.className = "saved-list-info";
 
+    const slideToggle = document.createElement("button");
+    slideToggle.className = "saved-list-slide-toggle";
+    slideToggle.textContent = ">";
+    slideToggle.setAttribute("aria-label", "Show CSV actions");
+
+    const slideActions = document.createElement("div");
+    slideActions.className = "saved-list-slide-actions";
+
+    const slideDelete = document.createElement("button");
+    slideDelete.className =
+      "saved-list-slide-action saved-list-slide-delete";
+    slideDelete.textContent = "🗑️";
+    slideDelete.setAttribute("aria-label", "Delete " + list.name);
+
+    const slideRename = document.createElement("button");
+    slideRename.className =
+      "saved-list-slide-action saved-list-slide-rename";
+    slideRename.textContent = "✒️";
+    slideRename.setAttribute("aria-label", "Rename " + list.name);
+
+    slideToggle.addEventListener("click", event => {
+      event.stopPropagation();
+      item.classList.add("saved-list-actions-open");
+    });
+
+    slideDelete.addEventListener("click", event => {
+      event.stopPropagation();
+
+      activeSavedList = list;
+      deleteSavedListButton.click();
+    });
+
+    slideRename.addEventListener("click", event => {
+      event.stopPropagation();
+
+      activeSavedList = list;
+      renameSavedListButton.click();
+    });
+
+    slideActions.append(slideDelete, slideRename);
+    item.append(slideToggle, slideActions);
+
     const name = document.createElement("strong");
     name.textContent = list.name + ".csv";
 
