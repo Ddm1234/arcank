@@ -1258,3 +1258,31 @@ input[type="file"] {
 .saved-list-item.saved-list-actions-open .saved-list-slide-action:last-child {
   margin-right: 0 !important;
 }
+
+/* Rename/Delete CSV — same popup theme, different action colors */
+
+#savedListRenameOverlay .saved-list-action-dialog,
+#savedListDeleteOverlay .saved-list-action-dialog {
+  background: #eef2ff;
+}
+
+#savedListRenameOverlay .saved-list-action-dialog > strong,
+#savedListDeleteOverlay .saved-list-action-dialog > strong {
+  color: #111827 !important;
+  background: #eef2ff !important;
+}
+
+/* Rename: green Save button */
+#savedListRenameOverlay #confirmSavedListRename {
+  background: #16a34a;
+  color: #ffffff;
+  border-color: #16a34a;
+}
+
+/* Delete: red Delete button */
+#savedListDeleteOverlay #confirmSavedListDelete {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+
