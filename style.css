@@ -1242,3 +1242,6 @@ input[type="file"] {
   visibility: visible !important;
   pointer-events: auto !important;
 }
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  right: 2px !important;
+}
