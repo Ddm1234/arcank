@@ -1066,3 +1066,9 @@ input[type="file"] {
   background: #eef2ff;
 }
 
+
+#savedCsvNameOverlay .saved-list-action-dialog > strong {
+  color: #16a34a !important;
+  background: #eef2ff !important;
+}
+
