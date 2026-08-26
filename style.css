@@ -968,3 +968,26 @@ input[type="file"] {
   }
 }
 
+
+/* Compact CSV action buttons */
+.saved-list-action-dialog {
+  max-width: 360px;
+}
+
+.saved-list-action-dialog #renameSavedListButton,
+.saved-list-action-dialog #deleteSavedListButton {
+  width: calc(50% - 5px);
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 12px;
+}
+
+.saved-list-action-dialog #deleteSavedListButton {
+  margin-left: 6px;
+}
+
+.saved-list-action-dialog #cancelSavedListAction {
+  width: 100%;
+  margin-top: 10px;
+}
+
