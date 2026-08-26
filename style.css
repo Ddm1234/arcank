@@ -1017,9 +1017,9 @@ input[type="file"] {
   border: 1px solid rgba(255, 120, 120, 0.35);
   background: rgba(255, 80, 80, 0.12);
   color: #ff8a8a;
-  border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 13px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
   font-weight: 600;
 }
 
