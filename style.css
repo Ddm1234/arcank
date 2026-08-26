@@ -1164,3 +1164,24 @@ input[type="file"] {
   color: #16a34a;
 }
 
+
+.saved-list-item.saved-list-actions-open .saved-list-load,
+.saved-list-item.saved-list-actions-open .saved-list-unload {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.saved-list-slide-actions {
+  top: 50% !important;
+  bottom: auto !important;
+  right: 8px !important;
+  left: auto !important;
+  height: 34px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.saved-list-slide-action {
+  flex: 0 0 34px !important;
+}
+
