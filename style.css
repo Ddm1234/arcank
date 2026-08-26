@@ -1152,3 +1152,25 @@ input[type="file"] {
   display: none;
 }
 
+
+.saved-list-slide-toggle {
+  left: 0 !important;
+  width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  color: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 10 !important;
+}
+
+.saved-list-info {
+  padding-left: 34px !important;
+  box-sizing: border-box !important;
+}
+
