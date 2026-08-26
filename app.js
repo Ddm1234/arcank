@@ -556,7 +556,12 @@ function renderSavedLists() {
 
   content.innerHTML = "";
 
-  lists.forEach((list, index) => {
+  const orderedLists = [
+    ...lists.filter(list => list.loaded),
+    ...lists.filter(list => !list.loaded).reverse()
+  ];
+
+  orderedLists.forEach((list) => {
     const item = document.createElement("div");
     item.className = "saved-list-item";
 
@@ -594,11 +599,13 @@ function renderSavedLists() {
           saved.loaded = false;
         });
 
-        const selected = updatedLists[index];
-        selected.loaded = true;
+        const selected = updatedLists.find(
+          saved => saved.name === list.name
+        );
 
-        updatedLists.splice(index, 1);
-        updatedLists.unshift(selected);
+        if (!selected) return;
+
+        selected.loaded = true;
 
         saveSavedLists(updatedLists);
 
