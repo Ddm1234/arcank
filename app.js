@@ -822,6 +822,10 @@ const savedCsvNameOverlay =
 const savedCsvNameInput =
   document.getElementById("savedCsvNameInput");
 
+savedListRenameInput.addEventListener("input", () => {
+  savedListRenameInput.setCustomValidity("");
+});
+
 const cancelSavedCsvName =
   document.getElementById("cancelSavedCsvName");
 
