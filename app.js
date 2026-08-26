@@ -493,6 +493,17 @@ savedListsButton.addEventListener("click", () => {
 });
 
 closeSavedLists.addEventListener("click", () => {
+  document
+    .querySelectorAll(".saved-list-item.saved-list-actions-open")
+    .forEach(item => {
+      item.classList.remove("saved-list-actions-open");
+
+      const toggle = item.querySelector(".saved-list-slide-toggle");
+      if (toggle) {
+        toggle.textContent = ">";
+      }
+    });
+
   savedListsPanel.hidden = true;
   savedListsButton.hidden = false;
 });
