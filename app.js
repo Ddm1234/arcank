@@ -719,6 +719,9 @@ const savedListDeleteOverlay =
 const savedListDeleteText =
   document.getElementById("savedListDeleteText");
 
+const savedListDeleteTitle =
+  document.getElementById("savedListDeleteTitle");
+
 const confirmSavedListDelete =
   document.getElementById("confirmSavedListDelete");
 
@@ -814,8 +817,10 @@ savedListRenameOverlay.addEventListener("click", event => {
 deleteSavedListButton.addEventListener("click", () => {
   if (!activeSavedList) return;
 
-  savedListDeleteText.textContent =
-    `Delete "${activeSavedList.name}"?`;
+  savedListDeleteTitle.textContent =
+    "Delete: " + activeSavedList.name + ".csv";
+
+  savedListDeleteText.textContent = "";
 
   savedListActionOverlay.hidden = true;
   savedListDeleteOverlay.hidden = false;
