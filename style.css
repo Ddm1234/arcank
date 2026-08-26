@@ -1233,3 +1233,12 @@ input[type="file"] {
   display: flex !important;
   color: #16a34a !important;
 }
+.saved-list-slide-actions {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
