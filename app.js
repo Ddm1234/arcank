@@ -832,6 +832,10 @@ const cancelSavedCsvName =
 const confirmSavedCsvName =
   document.getElementById("confirmSavedCsvName");
 
+savedCsvNameInput.addEventListener("input", () => {
+  savedCsvNameInput.setCustomValidity("");
+});
+
 let pendingCsvRows = null;
 let pendingCsvFileName = "";
 
@@ -952,8 +956,14 @@ confirmSavedCsvName.addEventListener("click", () => {
         list => list.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      throw new Error("A saved list with that name already exists.");
+      savedCsvNameInput.setCustomValidity(
+        "A CSV tab with this name already exists."
+      );
+      savedCsvNameInput.reportValidity();
+      return;
     }
+
+    savedCsvNameInput.setCustomValidity("");
 
     lists.push({
       name,
