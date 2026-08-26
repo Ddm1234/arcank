@@ -760,20 +760,6 @@ const confirmSavedListDelete =
 
 let activeSavedList = null;
 
-renameSavedListButton.addEventListener("click", () => {
-  if (!activeSavedList) return;
-
-  savedListRenameInput.value = activeSavedList.name;
-  savedListRenameTitle.textContent =
-    "Rename: " + activeSavedList.name + ".csv";
-  savedListRenameOverlay.hidden = false;
-
-  setTimeout(() => {
-    savedListRenameInput.focus();
-    savedListRenameInput.select();
-  }, 50);
-});
-
 confirmSavedListRename.addEventListener("click", () => {
   if (!activeSavedList) return;
 
@@ -827,17 +813,6 @@ savedListRenameOverlay.addEventListener("click", event => {
     savedListRenameOverlay.hidden = true;
     activeSavedList = null;
   }
-});
-
-deleteSavedListButton.addEventListener("click", () => {
-  if (!activeSavedList) return;
-
-  savedListDeleteTitle.textContent =
-    "Delete: " + activeSavedList.name + ".csv";
-
-  savedListDeleteText.textContent = "";
-
-  savedListDeleteOverlay.hidden = false;
 });
 
 confirmSavedListDelete.addEventListener("click", () => {
