@@ -623,14 +623,25 @@ function renderSavedLists() {
         event.stopPropagation();
 
         activeSavedList = list;
-        deleteSavedListButton.click();
+        savedListDeleteTitle.textContent =
+          "Delete: " + list.name + ".csv";
+        savedListDeleteText.textContent = "";
+        savedListDeleteOverlay.hidden = false;
       });
 
       slideRename.addEventListener("click", event => {
         event.stopPropagation();
 
         activeSavedList = list;
-        renameSavedListButton.click();
+        savedListRenameInput.value = list.name;
+        savedListRenameTitle.textContent =
+          "Rename: " + list.name + ".csv";
+        savedListRenameOverlay.hidden = false;
+
+        setTimeout(() => {
+          savedListRenameInput.focus();
+          savedListRenameInput.select();
+        }, 50);
       });
 
       slideActions.append(slideDelete, slideRename);
@@ -716,57 +727,12 @@ function renderSavedLists() {
       item.appendChild(unloadButton);
     }
 
-    let pressTimer = null;
-    let longPressTriggered = false;
-
-    item.addEventListener("pointerdown", event => {
-      if (event.target.closest("button")) return;
-      if (list.loaded) return;
-      if (item.classList.contains("saved-list-actions-open")) return;
-
-      longPressTriggered = false;
-
-      pressTimer = setTimeout(() => {
-        const currentLists = getSavedLists();
-        const currentIndex = currentLists.findIndex(
-          saved => saved.name === list.name
-        );
-
-        if (currentIndex === -1) return;
-
-        longPressTriggered = true;
-        openSavedListActionMenu(list);
-      }, 700);
-    });
-
-    const cancelPress = () => {
-      if (pressTimer) {
-        clearTimeout(pressTimer);
-        pressTimer = null;
-      }
-    };
-
-    item.addEventListener("pointerup", cancelPress);
-    item.addEventListener("pointercancel", cancelPress);
-
     content.appendChild(item);
   });
 }
 
 renderSavedLists();
 
-
-const savedListActionOverlay =
-  document.getElementById("savedListActionOverlay");
-
-const savedListActionTitle =
-  document.getElementById("savedListActionTitle");
-
-const renameSavedListButton =
-  document.getElementById("renameSavedListButton");
-
-const deleteSavedListButton =
-  document.getElementById("deleteSavedListButton");
 
 const savedListRenameOverlay =
   document.getElementById("savedListRenameOverlay");
@@ -794,30 +760,12 @@ const confirmSavedListDelete =
 
 let activeSavedList = null;
 
-function openSavedListActionMenu(list) {
-  activeSavedList = list;
-  savedListActionTitle.textContent = list.name + ".csv";
-  savedListActionOverlay.hidden = false;
-}
-
-function closeSavedListActionMenu() {
-  savedListActionOverlay.hidden = true;
-  activeSavedList = null;
-}
-
-savedListActionOverlay.addEventListener("click", event => {
-  if (event.target === savedListActionOverlay) {
-    closeSavedListActionMenu();
-  }
-});
-
 renameSavedListButton.addEventListener("click", () => {
   if (!activeSavedList) return;
 
   savedListRenameInput.value = activeSavedList.name;
   savedListRenameTitle.textContent =
     "Rename: " + activeSavedList.name + ".csv";
-  savedListActionOverlay.hidden = true;
   savedListRenameOverlay.hidden = false;
 
   setTimeout(() => {
@@ -889,7 +837,6 @@ deleteSavedListButton.addEventListener("click", () => {
 
   savedListDeleteText.textContent = "";
 
-  savedListActionOverlay.hidden = true;
   savedListDeleteOverlay.hidden = false;
 });
 
