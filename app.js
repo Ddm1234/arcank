@@ -723,7 +723,7 @@ let activeSavedList = null;
 
 function openSavedListActionMenu(list) {
   activeSavedList = list;
-  savedListActionTitle.textContent = list.name;
+  savedListActionTitle.textContent = list.name + ".csv";
   savedListActionOverlay.hidden = false;
 }
 
