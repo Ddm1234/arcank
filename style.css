@@ -1005,3 +1005,9 @@ input[type="file"] {
   margin-top: 4px;
 }
 
+
+
+/* Regular straight CSV tabs */
+.saved-list-item {
+  border-radius: 0 !important;
+}
