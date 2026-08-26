@@ -618,6 +618,34 @@ function renderSavedLists() {
       });
 
       item.appendChild(loadButton);
+    } else {
+      const unloadButton = document.createElement("button");
+      unloadButton.className = "saved-list-unload";
+      unloadButton.textContent = "↩";
+      unloadButton.setAttribute("aria-label", "Unload " + list.name);
+
+      unloadButton.addEventListener("click", event => {
+        event.stopPropagation();
+
+        const updatedLists = getSavedLists();
+
+        const selected = updatedLists.find(
+          saved => saved.name === list.name
+        );
+
+        if (!selected) return;
+
+        selected.loaded = false;
+
+        saveSavedLists(updatedLists);
+
+        batchMessage.textContent =
+          selected.name + " unloaded.";
+
+        renderSavedLists();
+      });
+
+      item.appendChild(unloadButton);
     }
 
     let pressTimer = null;
