@@ -722,6 +722,7 @@ function renderSavedLists() {
     item.addEventListener("pointerdown", event => {
       if (event.target.closest("button")) return;
       if (list.loaded) return;
+      if (item.classList.contains("saved-list-actions-open")) return;
 
       longPressTriggered = false;
 
