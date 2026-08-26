@@ -573,7 +573,7 @@ function renderSavedLists() {
     info.className = "saved-list-info";
 
     const name = document.createElement("strong");
-    name.textContent = list.name;
+    name.textContent = list.name + ".csv";
 
     const count = document.createElement("span");
     count.textContent =
@@ -985,6 +985,14 @@ confirmSavedCsvName.addEventListener("click", () => {
 
     if (!name) {
       throw new Error("Enter a name for this saved list.");
+    }
+
+    if (name.includes(".")) {
+      throw new Error("Dots are not allowed in the CSV name.");
+    }
+
+    if (/\.csv$/i.test(name)) {
+      throw new Error("Do not include .csv in the name.");
     }
 
     const lists = getSavedLists();
