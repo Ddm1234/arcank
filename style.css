@@ -1039,3 +1039,24 @@ input[type="file"] {
   border-radius: 6px !important;
   box-sizing: border-box !important;
 }
+
+
+#savedCsvNameOverlay .saved-list-action-dialog {
+  background: #eef2ff;
+  border-color: #818cf8;
+}
+
+#savedCsvNameOverlay .saved-list-action-dialog strong {
+  color: #4338ca;
+}
+
+#savedCsvNameOverlay .saved-list-action-dialog input {
+  background: #ffffff;
+  border-color: #818cf8;
+}
+
+#savedCsvNameOverlay #confirmSavedCsvName {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
