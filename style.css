@@ -1011,3 +1011,18 @@ input[type="file"] {
 .saved-list-item {
   border-radius: 0 !important;
 }
+
+.saved-list-unload {
+  cursor: pointer;
+  border: 1px solid rgba(255, 120, 120, 0.35);
+  background: rgba(255, 80, 80, 0.12);
+  color: #ff8a8a;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.saved-list-unload:hover {
+  background: rgba(255, 80, 80, 0.2);
+}
