@@ -639,6 +639,9 @@ function renderSavedLists() {
 
         saveSavedLists(updatedLists);
 
+        batchPayments.value = "";
+        updateCsvPreview([]);
+
         batchMessage.textContent =
           selected.name + " unloaded.";
 
