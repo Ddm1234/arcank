@@ -1088,22 +1088,44 @@ input[type="file"] {
   overflow: hidden;
 }
 
-.saved-list-slide-actions {
+.saved-list-slide-toggle {
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding-left: 4px;
-  transform: translateX(-100%);
+  justify-content: center;
+  color: #16a34a;
+}
+
+.saved-list-slide-actions {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  bottom: auto;
+  left: auto;
+  transform: translateX(120%) translateY(-50%);
   transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
   z-index: 2;
 }
 
 .saved-list-item.saved-list-actions-open .saved-list-slide-actions {
-  transform: translateX(0);
+  transform: translateX(0) translateY(-50%);
 }
 
 .saved-list-slide-action {
@@ -1126,51 +1148,19 @@ input[type="file"] {
   background: #dcfce7;
 }
 
-.saved-list-item.saved-list-actions-open .saved-list-info {
-  transform: translateX(76px);
-}
-
 .saved-list-info {
-  transition: transform 0.2s ease;
+  transition: none;
+  padding-left: 40px;
+  padding-right: 8px;
+  box-sizing: border-box;
 }
 
-.saved-list-slide-toggle {
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  font-size: 20px;
-  width: 28px;
-  height: 28px;
+.saved-list-item.saved-list-actions-open .saved-list-info {
+  transform: none;
 }
 
 .saved-list-item.saved-list-actions-open .saved-list-slide-toggle {
-  display: none;
-}
-
-
-.saved-list-slide-toggle {
-  left: 0 !important;
-  width: 34px !important;
-  height: 34px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: transparent !important;
-  color: inherit !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  z-index: 10 !important;
-}
-
-.saved-list-info {
-  padding-left: 34px !important;
-  box-sizing: border-box !important;
+  display: flex;
+  color: #16a34a;
 }
 

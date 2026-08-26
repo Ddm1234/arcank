@@ -594,7 +594,14 @@ function renderSavedLists() {
 
     slideToggle.addEventListener("click", event => {
       event.stopPropagation();
-      item.classList.add("saved-list-actions-open");
+
+      const isOpen = item.classList.toggle("saved-list-actions-open");
+
+      slideToggle.textContent = isOpen ? "<" : ">";
+      slideToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Hide CSV actions" : "Show CSV actions"
+      );
     });
 
     slideDelete.addEventListener("click", event => {
