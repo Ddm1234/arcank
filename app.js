@@ -988,7 +988,11 @@ confirmSavedCsvName.addEventListener("click", () => {
     }
 
     if (name.includes(".")) {
-      throw new Error("Dots are not allowed in the CSV name.");
+      savedCsvNameInput.setCustomValidity(
+        "Dots (.) are not allowed in CSV names."
+      );
+      savedCsvNameInput.reportValidity();
+      return;
     }
 
     if (/\.csv$/i.test(name)) {
