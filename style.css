@@ -1403,3 +1403,13 @@ button {
 .homepage-header .saved-lists-button {
   top: 10px !important;
 }
+
+
+/* Match homepage header height to CSV list header */
+.homepage-header {
+  min-height: 0 !important;
+  height: 80px !important;
+  box-sizing: border-box;
+  padding-top: 22px !important;
+  padding-bottom: 22px !important;
+}
