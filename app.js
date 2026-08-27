@@ -141,6 +141,7 @@ connectButton.addEventListener("click", async () => {
     sendButton.disabled = false;
     batchSendButton.disabled = false;
     renderSavedLists();
+setupSavedListsStretch();
     message.textContent = "Ready to send USDC on Arc Testnet.";
   } catch (error) {
     console.error(error);
@@ -548,6 +549,55 @@ function clearLoadedSavedLists() {
   if (changed) {
     saveSavedLists(lists);
   }
+}
+
+
+function setupSavedListsStretch() {
+  const content = document.getElementById("savedListsContent");
+  if (!content) return;
+
+  let startY = 0;
+  let stretching = false;
+
+  content.addEventListener("touchstart", event => {
+    if (event.touches.length !== 1) return;
+    startY = event.touches[0].clientY;
+    stretching = false;
+  }, { passive: true });
+
+  content.addEventListener("touchmove", event => {
+    if (event.touches.length !== 1) return;
+
+    const currentY = event.touches[0].clientY;
+    const pull = startY - currentY;
+
+    const atBottom =
+      content.scrollTop + content.clientHeight >= content.scrollHeight - 2;
+
+    if (atBottom && pull > 0) {
+      const distance = Math.min((pull - 10) * 0.18, 18);
+
+      if (distance > 0) {
+        stretching = true;
+        content.style.transform = `translateY(${-distance}px)`;
+        content.style.transition = "none";
+      }
+    }
+  }, { passive: true });
+
+  content.addEventListener("touchend", () => {
+    if (!stretching) return;
+
+    content.style.transition =
+      "transform 0.35s cubic-bezier(0.25, 1.4, 0.5, 1)";
+    content.style.transform = "translateY(0)";
+
+    setTimeout(() => {
+      content.style.transition = "";
+    }, 380);
+
+    stretching = false;
+  }, { passive: true });
 }
 
 function renderSavedLists() {
