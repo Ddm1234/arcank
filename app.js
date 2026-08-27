@@ -500,7 +500,7 @@ closeSavedLists.addEventListener("click", () => {
 
       const toggle = item.querySelector(".saved-list-slide-toggle");
       if (toggle) {
-        toggle.textContent = "👉";
+        toggle.textContent = ">";
       }
     });
 
@@ -589,7 +589,7 @@ function renderSavedLists() {
     if (!list.loaded) {
       slideToggle = document.createElement("button");
       slideToggle.className = "saved-list-slide-toggle";
-      slideToggle.textContent = "👉";
+      slideToggle.textContent = ">";
       slideToggle.setAttribute("aria-label", "Show CSV actions");
 
       slideActions = document.createElement("div");
@@ -612,7 +612,7 @@ function renderSavedLists() {
 
         const isOpen = item.classList.toggle("saved-list-actions-open");
 
-        slideToggle.textContent = isOpen ? "<" : "👉";
+        slideToggle.textContent = isOpen ? "<" : ">";
         slideToggle.setAttribute(
           "aria-label",
           isOpen ? "Close CSV actions" : "Show CSV actions"
