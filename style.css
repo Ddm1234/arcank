@@ -1421,3 +1421,9 @@ button {
   height: 52px !important;
   box-sizing: border-box;
 }
+
+
+/* Perfectly center open button in 52px homepage header */
+.homepage-header .saved-lists-button {
+  top: 8px !important;
+}
