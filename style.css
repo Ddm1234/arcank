@@ -1293,3 +1293,52 @@ input[type="file"] {
   background: #eef2ff !important;
 }
 
+
+/* CSV slide-open action mode */
+.saved-list-item {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.saved-list-item.saved-list-actions-open {
+  background: #eef2ff !important;
+  border-color: #818cf8 !important;
+}
+
+/* Hide CSV information while action bar is open */
+.saved-list-item.saved-list-actions-open .saved-list-info {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-25px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+/* Show CSV information normally */
+.saved-list-item .saved-list-info {
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+/* Slide action buttons into view */
+.saved-list-slide-actions {
+  transform: translateX(120%) translateY(-50%);
+  transition: transform 0.25s ease;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  transform: translateX(0) translateY(-50%);
+}
+
+/* Close button */
+.saved-list-item.saved-list-actions-open .saved-list-slide-toggle {
+  color: #4f46e5;
+  font-size: 24px;
+  font-weight: 700;
+}
+
