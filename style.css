@@ -1397,3 +1397,9 @@ button {
 .homepage-header .saved-lists-button {
   top: 22px !important;
 }
+
+
+/* Move open button upward to align with close button */
+.homepage-header .saved-lists-button {
+  top: 10px !important;
+}
