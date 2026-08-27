@@ -552,6 +552,11 @@ function clearLoadedSavedLists() {
 
 function renderSavedLists() {
   const content = document.getElementById("savedListsContent");
+  const savedCsvUpload = document.getElementById("savedCsvUpload");
+
+  if (savedCsvUpload) {
+    savedCsvUpload.hidden = !walletAddress;
+  }
 
   if (!walletAddress) {
     content.innerHTML = "<p>Connect wallet to view saved lists.</p>";
