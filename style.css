@@ -1391,3 +1391,9 @@ button {
 .homepage-header .saved-lists-button {
   top: 18px !important;
 }
+
+
+/* Align open button with saved-panel close button */
+.homepage-header .saved-lists-button {
+  top: 22px !important;
+}
