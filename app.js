@@ -628,7 +628,7 @@ function renderSavedLists() {
       });
 
       slideActions.append(slideDelete, slideRename);
-      item.append(slideToggle, slideActions);
+      item.append(slideActions);
     }
 
     const name = document.createElement("strong");
