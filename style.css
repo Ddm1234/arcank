@@ -1342,3 +1342,6 @@ input[type="file"] {
   font-weight: 700;
 }
 
+.saved-list-slide-actions {
+  top: 50% !important;
+}
