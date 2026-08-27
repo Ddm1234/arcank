@@ -1273,3 +1273,11 @@ input[type="file"] {
   font-weight: 500;
 }
 
+
+body:has(#savedListsPanel:not([hidden])) {
+  overflow: hidden !important;
+}
+
+#savedListsContent {
+  overscroll-behavior: contain !important;
+}
