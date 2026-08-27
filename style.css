@@ -1340,7 +1340,10 @@ body:has(#savedListsPanel:not([hidden])) {
 
 
 /* Prevent click animation on CSV panel close button */
-#closeSavedLists:active {
+#closeSavedLists,
+#closeSavedLists:active,
+#closeSavedLists:hover,
+#closeSavedLists:focus {
   transform: none !important;
   transition: none !important;
 }
