@@ -1461,3 +1461,15 @@ button {
   transition:
     transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
+
+
+/* CSV list tab status colors */
+.saved-list-item {
+  background: linear-gradient(135deg, #e5e7eb, #cfd3d8) !important;
+  border-color: #aeb4bb !important;
+}
+
+.saved-list-item.saved-list-loaded {
+  background: linear-gradient(135deg, #f8e7a1, #d9b84c) !important;
+  border-color: #b8942f !important;
+}
