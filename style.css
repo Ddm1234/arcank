@@ -1337,3 +1337,10 @@ body:has(#savedListsPanel:not([hidden])) {
   transform: none !important;
   transition: none !important;
 }
+
+
+/* Prevent click animation on CSV panel close button */
+#closeSavedLists:active {
+  transform: none !important;
+  transition: none !important;
+}
