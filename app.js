@@ -607,18 +607,6 @@ function renderSavedLists() {
       slideRename.textContent = "✒️";
       slideRename.setAttribute("aria-label", "Rename " + list.name);
 
-      slideToggle.addEventListener("click", event => {
-        event.stopPropagation();
-
-        const isOpen = item.classList.toggle("saved-list-actions-open");
-
-        slideToggle.textContent = isOpen ? "<" : ">";
-        slideToggle.setAttribute(
-          "aria-label",
-          isOpen ? "Close CSV actions" : "Show CSV actions"
-        );
-      });
-
       slideDelete.addEventListener("click", event => {
         event.stopPropagation();
 
