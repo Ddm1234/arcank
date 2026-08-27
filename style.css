@@ -1488,3 +1488,20 @@ button {
 .saved-list-item {
   -webkit-tap-highlight-color: transparent !important;
 }
+
+/* Full-height red action button on unloaded CSV tabs */
+.saved-list-item:not(.saved-list-loaded)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  transform: none;
+  background: #dc2626;
+  border-radius: 0;
+  z-index: 4;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
