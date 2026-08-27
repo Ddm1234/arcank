@@ -1371,3 +1371,11 @@ body:has(#savedListsPanel:not([hidden])) {
   user-select: none !important;
   -webkit-user-select: none !important;
 }
+
+
+/* Remove native browser tap highlight from all buttons */
+button {
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
