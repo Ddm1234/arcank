@@ -587,11 +587,6 @@ function renderSavedLists() {
     let slideActions = null;
 
     if (!list.loaded) {
-      slideToggle = document.createElement("button");
-      slideToggle.className = "saved-list-slide-toggle";
-      slideToggle.textContent = ">";
-      slideToggle.setAttribute("aria-label", "Show CSV actions");
-
       slideActions = document.createElement("div");
       slideActions.className = "saved-list-slide-actions";
 
