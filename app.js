@@ -555,7 +555,7 @@ function renderSavedLists() {
   const savedCsvUpload = document.getElementById("savedCsvUpload");
 
   if (savedCsvUpload) {
-    savedCsvUpload.hidden = !walletAddress;
+    savedCsvUpload.parentElement.hidden = !walletAddress;
   }
 
   if (!walletAddress) {
