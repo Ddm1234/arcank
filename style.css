@@ -765,7 +765,9 @@ input[type="file"] {
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-bottom: 20px;
+  padding-bottom: 140px !important;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 
@@ -1301,5 +1303,5 @@ body:has(#savedListsPanel:not([hidden])) {
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior: contain !important;
-  padding-bottom: 80px !important;
+  padding-bottom: 140px !important;
 }
