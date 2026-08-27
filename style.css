@@ -1345,3 +1345,16 @@ input[type="file"] {
 .saved-list-slide-actions {
   top: 50% !important;
 }
+
+/* Vertically center CSV slide action buttons */
+.saved-list-item .saved-list-slide-actions {
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateX(120%) translateY(-50%) !important;
+  align-items: center !important;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-actions {
+  transform: translateX(0) translateY(-50%) !important;
+}
+
