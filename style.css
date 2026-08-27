@@ -1427,3 +1427,22 @@ button {
 .homepage-header .saved-lists-button {
   top: 8px !important;
 }
+
+
+/* Backdrop behind CSV panel */
+.saved-lists-panel::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.saved-lists-panel.drawer-open::after {
+  opacity: 1;
+}
