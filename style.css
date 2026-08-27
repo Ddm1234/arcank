@@ -1362,3 +1362,12 @@ body:has(#savedListsPanel:not([hidden])) {
   transition: none !important;
   animation: none !important;
 }
+
+
+/* Remove native tap highlight from CSV panel buttons */
+#savedListsButton,
+#closeSavedLists {
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
