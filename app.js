@@ -490,7 +490,6 @@ const closeSavedLists = document.getElementById("closeSavedLists");
 
 savedListsButton.addEventListener("click", () => {
   savedListsPanel.hidden = false;
-  savedListsButton.hidden = true;
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -515,7 +514,6 @@ closeSavedLists.addEventListener("click", () => {
 
   setTimeout(() => {
     savedListsPanel.hidden = true;
-    savedListsButton.hidden = false;
   }, 280);
 });
 
