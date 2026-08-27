@@ -1124,7 +1124,7 @@ input[type="file"] {
   z-index: 2;
 }
 
-.saved-list-item.saved-list-actions-open /* CSV slide action buttons */
+/* CSV slide action buttons */
 .saved-list-slide-actions {
   position: absolute;
   right: 0;
