@@ -583,7 +583,6 @@ function renderSavedLists() {
     const info = document.createElement("div");
     info.className = "saved-list-info";
 
-    let slideToggle = null;
     let slideActions = null;
 
     if (!list.loaded) {
