@@ -1264,3 +1264,12 @@ input[type="file"] {
   display: none !important;
 }
 
+
+#savedListsContent > p {
+  color: #111827 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-size: 15px;
+  font-weight: 500;
+}
+
