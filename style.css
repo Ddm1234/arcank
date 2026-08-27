@@ -1286,3 +1286,20 @@ body:has(#savedListsPanel:not([hidden])) {
   padding-bottom: 80px !important;
   overscroll-behavior: contain !important;
 }
+
+.saved-lists-panel {
+  height: 100vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#savedListsContent {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  padding-bottom: 80px !important;
+}
