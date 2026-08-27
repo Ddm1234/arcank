@@ -582,12 +582,24 @@ function setupSavedListsStretch() {
     const atBottom =
       content.scrollTop + content.clientHeight >= content.scrollHeight - 2;
 
+    const atTop = content.scrollTop <= 0;
+
     if (atBottom && pull > 0) {
       const distance = Math.min((pull - 10) * 0.18, 18);
 
       if (distance > 0) {
         stretching = true;
         content.style.transform = `translateY(${-distance}px)`;
+        content.style.transition = "none";
+      }
+    }
+
+    if (atTop && pull < 0) {
+      const distance = Math.min((Math.abs(pull) - 10) * 0.18, 18);
+
+      if (distance > 0) {
+        stretching = true;
+        content.style.transform = `translateY(${distance}px)`;
         content.style.transition = "none";
       }
     }
