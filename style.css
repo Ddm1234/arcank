@@ -1473,3 +1473,13 @@ button {
   background: linear-gradient(135deg, #f8e7a1, #d9b84c) !important;
   border-color: #b8942f !important;
 }
+
+
+/* Keep CSV tab press shrink, but prevent temporary press color */
+.saved-list-item:active {
+  background: linear-gradient(135deg, #e5e7eb, #cfd3d8) !important;
+}
+
+.saved-list-item.saved-list-loaded:active {
+  background: linear-gradient(135deg, #f8e7a1, #d9b84c) !important;
+}
