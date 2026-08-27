@@ -491,6 +491,12 @@ const closeSavedLists = document.getElementById("closeSavedLists");
 savedListsButton.addEventListener("click", () => {
   savedListsPanel.hidden = false;
   savedListsButton.hidden = true;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      savedListsPanel.classList.add("drawer-open");
+    });
+  });
 });
 
 closeSavedLists.addEventListener("click", () => {
@@ -505,8 +511,12 @@ closeSavedLists.addEventListener("click", () => {
       }
     });
 
-  savedListsPanel.hidden = true;
-  savedListsButton.hidden = false;
+  savedListsPanel.classList.remove("drawer-open");
+
+  setTimeout(() => {
+    savedListsPanel.hidden = true;
+    savedListsButton.hidden = false;
+  }, 280);
 });
 
 
