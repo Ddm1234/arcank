@@ -1116,7 +1116,7 @@ input[type="file"] {
   bottom: auto;
   left: auto;
   transform: translateX(120%) translateY(-50%);
-  transition: transform 0.2s ease;
+  transition: none;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1133,7 +1133,7 @@ input[type="file"] {
   left: auto;
   height: 34px;
   transform: translateX(120%) translateY(-50%);
-  transition: transform 0.25s ease;
+  transition: none;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1239,7 +1239,7 @@ input[type="file"] {
 /* Slide action buttons into view */
 .saved-list-slide-actions {
   transform: translateX(120%) translateY(-50%);
-  transition: transform 0.25s ease;
+  transition: none;
 }
 
 .saved-list-item.saved-list-actions-open .saved-list-slide-actions {
