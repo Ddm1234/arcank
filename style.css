@@ -1088,6 +1088,7 @@ input[type="file"] {
   overflow: hidden;
 }
 
+/* CSV tab action UI — no animation */
 .saved-list-slide-toggle {
   position: absolute;
   left: 6px;
@@ -1113,44 +1114,27 @@ input[type="file"] {
   position: absolute;
   right: 8px;
   top: 50%;
-  bottom: auto;
   left: auto;
-  transform: translateX(120%) translateY(-50%);
-  transition: none;
+  bottom: auto;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 0;
   z-index: 2;
-}
-
-/* CSV slide action buttons */
-.saved-list-slide-actions {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  bottom: auto;
-  left: auto;
-  height: 34px;
-  transform: translateX(120%) translateY(-50%);
-  transition: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0;
-  z-index: 2;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .saved-list-item.saved-list-actions-open .saved-list-slide-actions {
-  right: 0;
-  top: 50%;
-  transform: translateX(0) translateY(-50%);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .saved-list-slide-action {
-  flex: 0 0 34px;
   width: 34px;
   height: 34px;
+  flex: 0 0 34px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -1168,6 +1152,12 @@ input[type="file"] {
 
 .saved-list-slide-rename {
   background: #dcfce7;
+}
+
+.saved-list-item.saved-list-actions-open .saved-list-slide-toggle {
+  color: #4f46e5;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 /* Rename/Delete CSV — same popup theme, different action colors */
