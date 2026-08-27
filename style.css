@@ -1446,3 +1446,18 @@ button {
 .saved-lists-panel.drawer-open::after {
   opacity: 1;
 }
+
+
+/* Keep CSV panel fully opaque while sliding closed */
+.saved-lists-panel {
+  opacity: 1 !important;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.28s !important;
+}
+
+.saved-lists-panel.drawer-open {
+  opacity: 1 !important;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
