@@ -1461,3 +1461,15 @@ button {
   transition:
     transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
+
+
+/* Spring effect for CSV panel top drawer */
+.saved-lists-panel {
+  transition:
+    transform 0.35s cubic-bezier(0.25, 1.4, 0.5, 1) !important;
+}
+
+.saved-lists-panel.drawer-open {
+  transition:
+    transform 0.35s cubic-bezier(0.25, 1.4, 0.5, 1) !important;
+}
