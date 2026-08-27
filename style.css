@@ -95,9 +95,7 @@ button {
   transition: transform 0.15s, opacity 0.15s;
 }
 
-button:active {
-  transform: scale(0.98);
-}
+
 
 button:disabled {
   opacity: 0.45;
