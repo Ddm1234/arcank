@@ -1305,3 +1305,20 @@ body:has(#savedListsPanel:not([hidden])) {
   overscroll-behavior: contain !important;
   padding-bottom: 140px !important;
 }
+
+
+/* CSV panel drawer animation */
+.saved-lists-panel {
+  transform: translateX(-105%);
+  opacity: 0;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+
+.saved-lists-panel:not([hidden]) {
+  transform: translateX(0);
+  opacity: 1;
+}
+
