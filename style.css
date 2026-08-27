@@ -1281,3 +1281,8 @@ body:has(#savedListsPanel:not([hidden])) {
 #savedListsContent {
   overscroll-behavior: contain !important;
 }
+
+#savedListsContent {
+  padding-bottom: 80px !important;
+  overscroll-behavior: contain !important;
+}
