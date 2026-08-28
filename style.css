@@ -1736,3 +1736,22 @@ button {
   pointer-events: auto !important;
 }
 
+
+/* CSV tab panel: slide in from LEFT, slide out to LEFT */
+.saved-list-tab-panel {
+  transform: translateX(-100%) !important;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.saved-list-item.csv-tab-panel-open .saved-list-tab-panel {
+  transform: translateX(0) !important;
+}
+
+/* Keep the underlying CSV tab completely stationary */
+.saved-list-item.csv-tab-panel-open .saved-list-info,
+.saved-list-item.csv-tab-panel-open .saved-list-load,
+.saved-list-item.csv-tab-panel-open .saved-list-unload {
+  transform: none !important;
+  transition: none !important;
+}
+
