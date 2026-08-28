@@ -1082,76 +1082,32 @@ savedCsvNameOverlay.addEventListener("click", event => {
   }
 });
 
+/* =========================================================
+   Clean CSV tab panel controller
+   ========================================================= */
 
-/* Clean CSV tab panel */
-document.getElementById("savedListsContent").addEventListener("click", event => {
-  const item = event.target.closest(".saved-list-item");
-  if (!item) return;
+const savedListsContent = document.getElementById("savedListsContent");
 
-  const rect = item.getBoundingClientRect();
-  const clickX = event.clientX - rect.left;
-
-  if (!item.classList.contains("csv-tab-panel-open") && clickX <= 22) {
-    event.stopPropagation();
-
-    let panel = item.querySelector(".saved-list-tab-panel");
-
-    if (!panel) {
-      panel = document.createElement("div");
-      panel.className = "saved-list-tab-panel";
-
-      panel.addEventListener("click", event => {
-        event.stopPropagation();
-        item.classList.remove("csv-tab-panel-open");
-      });
-
-      item.appendChild(panel);
-    }
-
-    item.classList.add("csv-tab-panel-open");
-  }
-});
-
-
-/* Never open the CSV tab panel from a loaded tab */
-document.getElementById("savedListsContent").addEventListener("click", event => {
-  const item = event.target.closest(".saved-list-item");
-  if (!item) return;
-
-  if (item.classList.contains("saved-list-loaded")) {
-    item.classList.remove("csv-tab-panel-open");
-    return;
-  }
-});
-
-
-/* CSV panel: close only through the left arrow */
-document.getElementById("savedListsContent").addEventListener("click", event => {
-  const item = event.target.closest(".saved-list-item");
-  if (!item || !item.classList.contains("csv-tab-panel-open")) return;
-
-  const rect = item.getBoundingClientRect();
-  const clickX = event.clientX - rect.left;
-
-  if (clickX <= 15) {
-    event.stopPropagation();
-    item.classList.remove("csv-tab-panel-open");
-  }
-});
-
-
-/* Final CSV panel arrow controller */
-document.getElementById("savedListsContent").addEventListener("click", event => {
+savedListsContent.addEventListener("click", event => {
   const item = event.target.closest(".saved-list-item");
   if (!item || item.classList.contains("saved-list-loaded")) return;
 
   const rect = item.getBoundingClientRect();
   const clickX = event.clientX - rect.left;
 
+  // Only the fixed 15px arrow strip controls the panel.
   if (clickX > 15) return;
 
   event.stopPropagation();
 
+  let panel = item.querySelector(".saved-list-tab-panel");
+
+  if (!panel) {
+    panel = document.createElement("div");
+    panel.className = "saved-list-tab-panel";
+    item.appendChild(panel);
+  }
+
   item.classList.toggle("csv-tab-panel-open");
-}, true);
+});
 
