@@ -693,6 +693,9 @@ function renderSavedLists() {
       ntspTrigger.addEventListener("click", event => {
         event.stopPropagation();
 
+        // NTSP is only available on unloaded CSV tabs.
+        if (item.classList.contains("saved-list-loaded")) return;
+
         const isOpen = item.classList.contains("ntsp-open");
 
         document

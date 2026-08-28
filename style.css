@@ -1858,4 +1858,15 @@ button {
   border-color: #ffffff !important;
 }
 
+
+/* Hide NTSP trigger on loaded CSV tabs */
+.saved-list-item.saved-list-loaded .ntsp-trigger {
+  display: none !important;
+}
+
+/* Loaded CSV tabs must never show an NTSP panel */
+.saved-list-item.saved-list-loaded .ntsp {
+  display: none !important;
+}
+
 /* NTSP END */
