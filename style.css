@@ -1780,3 +1780,50 @@ button {
   transform: none !important;
 }
 
+
+
+/* NTSP START */
+
+/* New Tab Slide Panel */
+.saved-list-item {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Empty panel: starts immediately after the 15px arrow strip */
+.saved-list-item .ntsp {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 15px !important;
+  right: 0 !important;
+  width: auto !important;
+  height: 100% !important;
+  background: #000000 !important;
+
+  transform: translateX(-100%) !important;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+
+  z-index: 20 !important;
+  pointer-events: none !important;
+}
+
+/* NTSP open */
+.saved-list-item.ntsp-open .ntsp {
+  transform: translateX(0) !important;
+  pointer-events: auto !important;
+}
+
+/* Arrow stays above NTSP */
+.saved-list-item:not(.saved-list-loaded)::after {
+  z-index: 40 !important;
+  pointer-events: none !important;
+}
+
+.saved-list-item .saved-list-slide-toggle {
+  position: relative !important;
+  z-index: 50 !important;
+}
+
+/* NTSP END */

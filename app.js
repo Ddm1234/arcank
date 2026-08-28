@@ -656,38 +656,51 @@ function renderSavedLists() {
     const item = document.createElement("div");
     item.className = "saved-list-item";
 
-    // Only one CSV tab panel can be open at a time.
+    // NTSP = New Tab Slide Panel
     item.addEventListener("click", event => {
       if (list.loaded) return;
 
       const toggle = item.querySelector(".saved-list-slide-toggle");
-      if (!toggle || event.target !== toggle) return;
+      const ntsp = item.querySelector(".ntsp");
+
+      if (!toggle || !ntsp || event.target !== toggle) return;
+
+      const isOpen = item.classList.contains("ntsp-open");
 
       document
-        .querySelectorAll(".saved-list-item.csv-tab-panel-open")
+        .querySelectorAll(".saved-list-item.ntsp-open")
         .forEach(otherItem => {
           if (otherItem !== item) {
-            otherItem.classList.remove("csv-tab-panel-open");
+            otherItem.classList.remove("ntsp-open");
 
             const otherToggle =
               otherItem.querySelector(".saved-list-slide-toggle");
+
+            const otherNtsp = otherItem.querySelector(".ntsp");
 
             if (otherToggle) {
               otherToggle.textContent = "⟩";
               otherToggle.setAttribute(
                 "aria-label",
-                "Show CSV actions"
+                "Show new tab slide panel"
               );
+            }
+
+            if (otherNtsp) {
+              otherNtsp.setAttribute("aria-hidden", "true");
             }
           }
         });
 
-      const isOpen = item.classList.toggle("csv-tab-panel-open");
+      item.classList.toggle("ntsp-open", !isOpen);
+      ntsp.setAttribute("aria-hidden", isOpen ? "true" : "false");
 
-      toggle.textContent = isOpen ? "⟨" : "⟩";
+      toggle.textContent = isOpen ? "⟩" : "⟨";
       toggle.setAttribute(
         "aria-label",
-        isOpen ? "Close CSV actions" : "Show CSV actions"
+        isOpen
+          ? "Show new tab slide panel"
+          : "Close new tab slide panel"
       );
     });
 
@@ -697,53 +710,6 @@ function renderSavedLists() {
 
     const info = document.createElement("div");
     info.className = "saved-list-info";
-
-    let slideActions = null;
-
-    if (!list.loaded) {
-      slideActions = document.createElement("div");
-      slideActions.className = "saved-list-slide-actions";
-
-      const slideDelete = document.createElement("button");
-      slideDelete.className =
-        "saved-list-slide-action saved-list-slide-delete";
-      slideDelete.textContent = "🗑️";
-      slideDelete.setAttribute("aria-label", "Delete " + list.name);
-
-      const slideRename = document.createElement("button");
-      slideRename.className =
-        "saved-list-slide-action saved-list-slide-rename";
-      slideRename.textContent = "✒️";
-      slideRename.setAttribute("aria-label", "Rename " + list.name);
-
-      slideDelete.addEventListener("click", event => {
-        event.stopPropagation();
-
-        activeSavedList = list;
-        savedListDeleteTitle.textContent =
-          "Delete: " + list.name + ".csv";
-        savedListDeleteText.textContent = "";
-        savedListDeleteOverlay.hidden = false;
-      });
-
-      slideRename.addEventListener("click", event => {
-        event.stopPropagation();
-
-        activeSavedList = list;
-        savedListRenameInput.value = list.name;
-        savedListRenameTitle.textContent =
-          "Rename: " + list.name + ".csv";
-        savedListRenameOverlay.hidden = false;
-
-        setTimeout(() => {
-          savedListRenameInput.focus();
-          savedListRenameInput.select();
-        }, 50);
-      });
-
-      slideActions.append(slideDelete, slideRename);
-      item.append(slideActions);
-    }
 
     const name = document.createElement("strong");
     name.textContent = list.name + ".csv";
@@ -758,6 +724,14 @@ function renderSavedLists() {
     item.appendChild(info);
 
     if (!list.loaded) {
+      // NTSP = New Tab Slide Panel
+      // Empty for now. Content will be added later.
+      const ntsp = document.createElement("div");
+      ntsp.className = "ntsp";
+      ntsp.setAttribute("aria-hidden", "true");
+
+      item.appendChild(ntsp);
+
       const loadButton = document.createElement("button");
       loadButton.className = "saved-list-load";
       loadButton.textContent = "🔁";
