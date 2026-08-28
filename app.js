@@ -1139,3 +1139,19 @@ document.getElementById("savedListsContent").addEventListener("click", event => 
   }
 });
 
+
+/* Final CSV panel arrow controller */
+document.getElementById("savedListsContent").addEventListener("click", event => {
+  const item = event.target.closest(".saved-list-item");
+  if (!item || item.classList.contains("saved-list-loaded")) return;
+
+  const rect = item.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+
+  if (clickX > 15) return;
+
+  event.stopPropagation();
+
+  item.classList.toggle("csv-tab-panel-open");
+}, true);
+
