@@ -1511,3 +1511,9 @@ button {
   padding-left: 10px;
 }
 
+
+/* Make unloaded CSV tab marker wider */
+.saved-list-item:not(.saved-list-loaded)::before {
+  width: 15px;
+}
+
