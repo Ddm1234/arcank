@@ -656,25 +656,46 @@ function renderSavedLists() {
     const item = document.createElement("div");
     item.className = "saved-list-item";
 
-    // Only one CSV tab action panel can be open at a time.
-    item.addEventListener("click", event => {
-      if (!event.target.closest(".saved-list-slide-toggle")) return;
+    let slideToggle = null;
+    let slideActions = null;
 
-      document
-        .querySelectorAll(".saved-list-item.saved-list-actions-open")
-        .forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove("saved-list-actions-open");
+    if (!list.loaded) {
+      slideToggle = document.createElement("button");
+      slideToggle.className = "saved-list-slide-toggle";
+      slideToggle.textContent = ">";
+      slideToggle.setAttribute("aria-label", "Show CSV actions");
 
-            const otherToggle =
-              otherItem.querySelector(".saved-list-slide-toggle");
+      slideToggle.addEventListener("click", event => {
+        event.stopPropagation();
 
-            if (otherToggle) {
-              otherToggle.textContent = ">";
+        document
+          .querySelectorAll(".saved-list-item.saved-list-actions-open")
+          .forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove("saved-list-actions-open");
+
+              const otherToggle =
+                otherItem.querySelector(".saved-list-slide-toggle");
+
+              if (otherToggle) {
+                otherToggle.textContent = ">";
+                otherToggle.setAttribute(
+                  "aria-label",
+                  "Show CSV actions"
+                );
+              }
             }
-          }
-        });
-    });
+          });
+
+        const isOpen = item.classList.toggle("saved-list-actions-open");
+
+        slideToggle.textContent = isOpen ? "<" : ">";
+        slideToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Close CSV actions" : "Show CSV actions"
+        );
+      });
+    }
 
     if (list.loaded) {
       item.classList.add("saved-list-loaded");
@@ -682,8 +703,6 @@ function renderSavedLists() {
 
     const info = document.createElement("div");
     info.className = "saved-list-info";
-
-    let slideActions = null;
 
     if (!list.loaded) {
       slideActions = document.createElement("div");
@@ -727,7 +746,7 @@ function renderSavedLists() {
       });
 
       slideActions.append(slideDelete, slideRename);
-      item.append(slideActions);
+      item.append(slideToggle, slideActions);
     }
 
     const name = document.createElement("strong");
