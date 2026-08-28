@@ -1570,3 +1570,35 @@ button {
   padding: 0 !important;
 }
 
+
+/* Match Load 🔁 and Unload ↩️ visual size */
+.saved-list-unload {
+  font-family: Arial, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
+.saved-list-load {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  font-size: 20px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
