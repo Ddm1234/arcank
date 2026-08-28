@@ -738,14 +738,15 @@ function renderSavedLists() {
     info.append(name, count);
     item.appendChild(info);
 
-    // NTSP = New Tab Slide Panel
-    // Every CSV tab keeps its own empty NTSP panel.
-    const ntsp = document.createElement("div");
-    ntsp.className = "ntsp";
-    ntsp.setAttribute("aria-hidden", "true");
-    item.appendChild(ntsp);
-
     if (!list.loaded) {
+      // NTSP = New Tab Slide Panel
+      // Empty for now. Content will be added later.
+      const ntsp = document.createElement("div");
+      ntsp.className = "ntsp";
+      ntsp.setAttribute("aria-hidden", "true");
+
+      item.appendChild(ntsp);
+
       const loadButton = document.createElement("button");
       loadButton.className = "saved-list-load";
       loadButton.textContent = "🔁";

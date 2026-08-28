@@ -1686,32 +1686,9 @@ button {
 
 
 /* Keep the underlying CSV tab completely stationary */
-.saved-list-item.csv-tab-panel-open .saved-list-info,
-.saved-list-item.csv-tab-panel-open .saved-list-load,
-.saved-list-item.csv-tab-panel-open .saved-list-unload {
-  transform: none !important;
-  transition: none !important;
-}
 
 
-/* Clean black panel starts AFTER the arrow area */
-.saved-list-tab-panel {
-  position: absolute !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  left: 15px !important;
-  right: 0 !important;
-  width: auto !important;
-  height: 100% !important;
-  background: #000000 !important;
-  transform: translateX(-100%) !important;
-  z-index: 20 !important;
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
 
-/* =========================================================
-   Clean CSV tab panel
-   ========================================================= */
 
 .saved-list-item {
   position: relative !important;
@@ -1746,39 +1723,10 @@ button {
 }
 
 /* Black panel begins immediately after arrow strip */
-.saved-list-tab-panel {
-  position: absolute !important;
-  top: 0 !important;
-  bottom: 0 !important;
-  left: 15px !important;
-  right: 0 !important;
-  width: auto !important;
-  height: 100% !important;
-  background: #000000 !important;
-  transform: translateX(-100%) !important;
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  z-index: 20 !important;
-  pointer-events: none !important;
-}
 
-.saved-list-item.csv-tab-panel-open .saved-list-tab-panel {
-  transform: translateX(0) !important;
-  pointer-events: auto !important;
-}
 
-/* Left arrow becomes close arrow */
-.saved-list-item.csv-tab-panel-open::after {
-  content: "⟨" !important;
-  pointer-events: auto !important;
-  z-index: 50 !important;
-}
 
 /* Never move the original CSV controls */
-.saved-list-item.csv-tab-panel-open .saved-list-info,
-.saved-list-item.csv-tab-panel-open .saved-list-load,
-.saved-list-item.csv-tab-panel-open .saved-list-unload {
-  transform: none !important;
-}
 
 
 
