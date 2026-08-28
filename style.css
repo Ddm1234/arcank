@@ -1622,3 +1622,13 @@ button {
   box-shadow: none !important;
 }
 
+
+/* Final CSV Unload button appearance */
+.saved-list-unload {
+  background: #ffffff !important;
+  border: none !important;
+  color: #dc2626 !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+
