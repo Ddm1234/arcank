@@ -1602,3 +1602,13 @@ button {
   box-sizing: border-box !important;
 }
 
+
+/* Make Unload ↩️ visually fill the button like Load 🔁 */
+.saved-list-unload-icon {
+  display: inline-block;
+  font-size: 1.35em;
+  line-height: 1;
+  transform: scaleX(1.12);
+  transform-origin: center;
+}
+
