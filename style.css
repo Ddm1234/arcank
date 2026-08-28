@@ -1808,3 +1808,22 @@ button {
   transition: none !important;
 }
 
+
+/* Never create a second arrow when the CSV panel is open */
+.saved-list-item.csv-tab-panel-open::after {
+  content: none !important;
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* Keep only the left arrow when the panel is closed */
+.saved-list-item:not(.saved-list-loaded):not(.csv-tab-panel-open)::after {
+  content: "⟩" !important;
+  left: 0 !important;
+  right: auto !important;
+  width: 15px !important;
+  background: #ffffff !important;
+  color: #111111 !important;
+  z-index: 30 !important;
+}
+
