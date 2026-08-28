@@ -512,6 +512,28 @@ closeSavedLists.addEventListener("click", () => {
 
   savedListsPanel.classList.remove("drawer-open");
 
+  // Close any open NTSP when the main bar panel closes.
+  document
+    .querySelectorAll(".saved-list-item.ntsp-open")
+    .forEach(item => {
+      item.classList.remove("ntsp-open");
+
+      const ntsp = item.querySelector(".ntsp");
+      const trigger = item.querySelector(".ntsp-trigger");
+
+      if (ntsp) {
+        ntsp.setAttribute("aria-hidden", "true");
+      }
+
+      if (trigger) {
+        trigger.textContent = "⟩";
+        trigger.setAttribute(
+          "aria-label",
+          "Show new tab slide panel"
+        );
+      }
+    });
+
   setTimeout(() => {
     savedListsPanel.hidden = true;
   }, 280);
