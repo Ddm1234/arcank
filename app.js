@@ -759,7 +759,7 @@ function renderSavedLists() {
     } else {
       const unloadButton = document.createElement("button");
       unloadButton.className = "saved-list-unload";
-      unloadButton.textContent = "↩";
+      unloadButton.textContent = "↩️";
       unloadButton.setAttribute("aria-label", "Unload " + list.name);
 
       unloadButton.addEventListener("click", event => {
