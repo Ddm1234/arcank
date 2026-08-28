@@ -671,7 +671,12 @@ function renderSavedLists() {
 
   const orderedLists = [
     ...lists.filter(list => list.loaded),
-    ...lists.filter(list => !list.loaded).reverse()
+    ...lists
+      .filter(list => !list.loaded)
+      .sort((a, b) => {
+        return Number(b.lastUnloadedAt || 0) -
+               Number(a.lastUnloadedAt || 0);
+      })
   ];
 
   orderedLists.forEach((list) => {
@@ -819,8 +824,13 @@ function renderSavedLists() {
 
         const updatedLists = getSavedLists();
 
+        const now = Date.now();
+
         updatedLists.forEach(saved => {
-          saved.loaded = false;
+          if (saved.loaded && saved.name !== list.name) {
+            saved.loaded = false;
+            saved.lastUnloadedAt = now;
+          }
         });
 
         const selected = updatedLists.find(
@@ -876,6 +886,7 @@ function renderSavedLists() {
         if (!selected) return;
 
         selected.loaded = false;
+        selected.lastUnloadedAt = Date.now();
 
         saveSavedLists(updatedLists);
 
