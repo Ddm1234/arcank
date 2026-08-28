@@ -1827,3 +1827,19 @@ button {
   z-index: 30 !important;
 }
 
+
+/* CSV panel toggle arrow */
+.saved-list-item.csv-tab-panel-open::after {
+  content: "⟨" !important;
+  display: flex !important;
+  left: 0 !important;
+  right: auto !important;
+  width: 15px !important;
+  height: 100% !important;
+  background: #ffffff !important;
+  color: #111111 !important;
+  z-index: 40 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+

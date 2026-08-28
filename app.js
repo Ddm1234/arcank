@@ -1124,3 +1124,18 @@ document.getElementById("savedListsContent").addEventListener("click", event => 
   }
 });
 
+
+/* CSV panel: close only through the left arrow */
+document.getElementById("savedListsContent").addEventListener("click", event => {
+  const item = event.target.closest(".saved-list-item");
+  if (!item || !item.classList.contains("csv-tab-panel-open")) return;
+
+  const rect = item.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+
+  if (clickX <= 15) {
+    event.stopPropagation();
+    item.classList.remove("csv-tab-panel-open");
+  }
+});
+
