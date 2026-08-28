@@ -745,6 +745,43 @@ function renderSavedLists() {
       ntsp.className = "ntsp";
       ntsp.setAttribute("aria-hidden", "true");
 
+      // New NTSP action buttons
+      const ntspActions = document.createElement("div");
+      ntspActions.className = "ntsp-actions";
+
+      const dbWrap = document.createElement("div");
+      dbWrap.className = "ntsp-action";
+
+      const dbLabel = document.createElement("span");
+      dbLabel.className = "ntsp-action-label";
+      dbLabel.textContent = "Delete";
+
+      const dbButton = document.createElement("button");
+      dbButton.className = "ntsp-db";
+      dbButton.type = "button";
+      dbButton.textContent = "DB";
+      dbButton.setAttribute("aria-label", "Delete CSV");
+
+      dbWrap.append(dbLabel, dbButton);
+
+      const rbWrap = document.createElement("div");
+      rbWrap.className = "ntsp-action";
+
+      const rbLabel = document.createElement("span");
+      rbLabel.className = "ntsp-action-label";
+      rbLabel.textContent = "Rename";
+
+      const rbButton = document.createElement("button");
+      rbButton.className = "ntsp-rb";
+      rbButton.type = "button";
+      rbButton.textContent = "RB";
+      rbButton.setAttribute("aria-label", "Rename CSV");
+
+      rbWrap.append(rbLabel, rbButton);
+
+      ntspActions.append(dbWrap, rbWrap);
+      ntsp.appendChild(ntspActions);
+
       item.appendChild(ntsp);
 
       const loadButton = document.createElement("button");
