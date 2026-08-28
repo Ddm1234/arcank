@@ -1505,3 +1505,9 @@ button {
   cursor: pointer;
 }
 
+
+/* Add breathing room between red marker and CSV content */
+.saved-list-item:not(.saved-list-loaded) .saved-list-info {
+  padding-left: 10px;
+}
+
