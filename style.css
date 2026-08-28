@@ -1537,3 +1537,14 @@ button {
 #savedListsEmptyState[hidden] {
   display: none !important;
 }
+
+/* Improve CSV Load 🔁 icon fit */
+.saved-list-load {
+  font-size: 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+}
+
