@@ -1802,62 +1802,60 @@ button {
 
 /* New NTSP DB / RB buttons */
 .ntsp-actions {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  height: auto;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  box-sizing: border-box;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  box-sizing: border-box !important;
 }
 
 .ntsp-action {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
 }
 
 .ntsp-action-label {
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
 }
 
 .ntsp-db,
 .ntsp-rb {
-  width: 52px;
-  height: 38px;
-  border-radius: 7px;
-  border: 1px solid #ffffff;
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-sizing: border-box;
+  width: 52px !important;
+  height: 38px !important;
+  border-radius: 7px !important;
+  border: 1px solid #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
 }
 
 .ntsp-db {
-  background: #dc2626;
-  color: #ffffff;
-  border-color: #dc2626;
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border-color: #dc2626 !important;
 }
 
 .ntsp-rb {
-  background: #ffffff;
-  color: #111111;
-  border-color: #ffffff;
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #ffffff !important;
 }
 
 /* NTSP END */
