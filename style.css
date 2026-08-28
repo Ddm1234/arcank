@@ -1517,3 +1517,23 @@ button {
   width: 15px;
 }
 
+/* Wallet-disconnected CSV empty state */
+#savedListsEmptyState {
+  display: block;
+  margin: 18px 12px;
+  padding: 14px 12px;
+  color: #111827 !important;
+  background: #f3f4f6 !important;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#savedListsEmptyState[hidden] {
+  display: none !important;
+}
