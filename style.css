@@ -1632,3 +1632,9 @@ button {
   box-shadow: none !important;
 }
 
+
+/* Change unloaded CSV left action bar from red to white */
+.saved-list-item:not(.saved-list-loaded)::before {
+  background: #ffffff !important;
+}
+
