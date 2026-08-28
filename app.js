@@ -660,22 +660,35 @@ function renderSavedLists() {
     item.addEventListener("click", event => {
       if (list.loaded) return;
 
-      const rect = item.getBoundingClientRect();
-      const clickedLeftArrowArea =
-        event.clientX >= rect.left &&
-        event.clientX <= rect.left + 15;
-
-      if (!clickedLeftArrowArea) return;
+      const toggle = item.querySelector(".saved-list-slide-toggle");
+      if (!toggle || event.target !== toggle) return;
 
       document
         .querySelectorAll(".saved-list-item.csv-tab-panel-open")
         .forEach(otherItem => {
           if (otherItem !== item) {
             otherItem.classList.remove("csv-tab-panel-open");
+
+            const otherToggle =
+              otherItem.querySelector(".saved-list-slide-toggle");
+
+            if (otherToggle) {
+              otherToggle.textContent = "⟩";
+              otherToggle.setAttribute(
+                "aria-label",
+                "Show CSV actions"
+              );
+            }
           }
         });
 
-      item.classList.toggle("csv-tab-panel-open");
+      const isOpen = item.classList.toggle("csv-tab-panel-open");
+
+      toggle.textContent = isOpen ? "⟨" : "⟩";
+      toggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close CSV actions" : "Show CSV actions"
+      );
     });
 
     if (list.loaded) {
