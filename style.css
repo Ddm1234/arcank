@@ -472,7 +472,7 @@ input[type="file"] {
 }
 
 .saved-list-item:active {
-  transform: scale(0.98);
+  transform: none !important;
 }
 
 .saved-list-loaded {
