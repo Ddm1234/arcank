@@ -1559,3 +1559,14 @@ button {
   padding: 0 !important;
 }
 
+
+/* Visually match Unload ↩️ to Load 🔁 */
+.saved-list-unload {
+  font-size: 24px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
