@@ -628,10 +628,15 @@ function renderSavedLists() {
     savedCsvUpload.parentElement.hidden = !walletAddress;
   }
 
+  const emptyState = document.getElementById("savedListsEmptyState");
+
   if (!walletAddress) {
-    content.innerHTML = "<p>Connect wallet to view saved lists.</p>";
+    content.innerHTML = "";
+    if (emptyState) emptyState.hidden = false;
     return;
   }
+
+  if (emptyState) emptyState.hidden = true;
 
   const lists = getSavedLists();
 
