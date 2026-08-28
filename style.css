@@ -1612,3 +1612,13 @@ button {
   transform-origin: center;
 }
 
+
+/* Solid CSV Unload button */
+.saved-list-unload {
+  background: #dc2626 !important;
+  border: 1px solid #b91c1c !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+
