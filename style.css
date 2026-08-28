@@ -1710,3 +1710,13 @@ button {
   pointer-events: auto;
 }
 
+
+/* Show CSV tab panel arrow only on unloaded tabs */
+.saved-list-item.saved-list-loaded::after {
+  display: none !important;
+}
+
+.saved-list-item.saved-list-loaded {
+  cursor: pointer;
+}
+
