@@ -1638,3 +1638,17 @@ button {
   background: #ffffff !important;
 }
 
+
+/* Add centered ⟩ to unloaded CSV left action bar */
+.saved-list-item:not(.saved-list-loaded)::before {
+  content: "⟩" !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #dc2626 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+}
+
