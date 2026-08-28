@@ -1652,3 +1652,9 @@ button {
   text-align: center !important;
 }
 
+
+/* Make CSV left-bar arrow black */
+.saved-list-item:not(.saved-list-loaded)::before {
+  color: #000000 !important;
+}
+
