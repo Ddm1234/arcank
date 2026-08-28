@@ -1124,25 +1124,7 @@ savedCsvNameOverlay.addEventListener("click", event => {
 const savedListsContent = document.getElementById("savedListsContent");
 
 savedListsContent.addEventListener("click", event => {
-  const item = event.target.closest(".saved-list-item");
-  if (!item || item.classList.contains("saved-list-loaded")) return;
-
-  const rect = item.getBoundingClientRect();
-  const clickX = event.clientX - rect.left;
-
-  // Only the fixed 15px arrow strip controls the panel.
-  if (clickX > 15) return;
-
-  event.stopPropagation();
-
-  let panel = item.querySelector(".saved-list-tab-panel");
-
-  if (!panel) {
-    panel = document.createElement("div");
-    panel.className = "saved-list-tab-panel";
-    item.appendChild(panel);
-  }
-
-  item.classList.toggle("csv-tab-panel-open");
+  // CSV tab panels are controlled only by .saved-list-slide-toggle.
+  // This handler intentionally does nothing.
 });
 
