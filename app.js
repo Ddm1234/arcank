@@ -1082,3 +1082,33 @@ savedCsvNameOverlay.addEventListener("click", event => {
   }
 });
 
+
+/* Clean CSV tab panel */
+document.getElementById("savedListsContent").addEventListener("click", event => {
+  const item = event.target.closest(".saved-list-item");
+  if (!item) return;
+
+  const rect = item.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+
+  if (!item.classList.contains("csv-tab-panel-open") && clickX <= 22) {
+    event.stopPropagation();
+
+    let panel = item.querySelector(".saved-list-tab-panel");
+
+    if (!panel) {
+      panel = document.createElement("div");
+      panel.className = "saved-list-tab-panel";
+
+      panel.addEventListener("click", event => {
+        event.stopPropagation();
+        item.classList.remove("csv-tab-panel-open");
+      });
+
+      item.appendChild(panel);
+    }
+
+    item.classList.add("csv-tab-panel-open");
+  }
+});
+

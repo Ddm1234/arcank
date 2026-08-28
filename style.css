@@ -1658,3 +1658,55 @@ button {
   color: #000000 !important;
 }
 
+
+/* Clean full-tab CSV panel */
+.saved-list-item {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.saved-list-tab-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: #ffffff;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.saved-list-item.csv-tab-panel-open .saved-list-tab-panel {
+  transform: translateX(0);
+}
+
+.saved-list-item.csv-tab-panel-open .saved-list-info,
+.saved-list-item.csv-tab-panel-open .saved-list-load,
+.saved-list-item.csv-tab-panel-open .saved-list-unload {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.saved-list-item.csv-tab-panel-open::after {
+  display: none !important;
+}
+
+.saved-list-item:not(.csv-tab-panel-open)::after {
+  content: "⟩";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #111111 !important;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 6;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
