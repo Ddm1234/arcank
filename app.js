@@ -1112,3 +1112,15 @@ document.getElementById("savedListsContent").addEventListener("click", event => 
   }
 });
 
+
+/* Never open the CSV tab panel from a loaded tab */
+document.getElementById("savedListsContent").addEventListener("click", event => {
+  const item = event.target.closest(".saved-list-item");
+  if (!item) return;
+
+  if (item.classList.contains("saved-list-loaded")) {
+    item.classList.remove("csv-tab-panel-open");
+    return;
+  }
+});
+
