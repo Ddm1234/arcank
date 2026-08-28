@@ -656,24 +656,26 @@ function renderSavedLists() {
     const item = document.createElement("div");
     item.className = "saved-list-item";
 
-    // Only one CSV tab action panel can be open at a time.
+    // Only one CSV tab panel can be open at a time.
     item.addEventListener("click", event => {
-      if (!event.target.closest(".saved-list-slide-toggle")) return;
+      if (list.loaded) return;
+
+      const rect = item.getBoundingClientRect();
+      const clickedLeftArrowArea =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.left + 15;
+
+      if (!clickedLeftArrowArea) return;
 
       document
-        .querySelectorAll(".saved-list-item.saved-list-actions-open")
+        .querySelectorAll(".saved-list-item.csv-tab-panel-open")
         .forEach(otherItem => {
           if (otherItem !== item) {
-            otherItem.classList.remove("saved-list-actions-open");
-
-            const otherToggle =
-              otherItem.querySelector(".saved-list-slide-toggle");
-
-            if (otherToggle) {
-              otherToggle.textContent = ">";
-            }
+            otherItem.classList.remove("csv-tab-panel-open");
           }
         });
+
+      item.classList.toggle("csv-tab-panel-open");
     });
 
     if (list.loaded) {
