@@ -1720,3 +1720,19 @@ button {
   cursor: pointer;
 }
 
+
+/* Loaded CSV tabs must have no arrow/panel trigger */
+.saved-list-item.saved-list-loaded::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Only unloaded CSV tabs get the white arrow trigger */
+.saved-list-item:not(.saved-list-loaded)::after {
+  content: "⟩" !important;
+  display: flex !important;
+  pointer-events: auto !important;
+}
+
