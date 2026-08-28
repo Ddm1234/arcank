@@ -656,53 +656,68 @@ function renderSavedLists() {
     const item = document.createElement("div");
     item.className = "saved-list-item";
 
-    // NTSP = New Tab Slide Panel
-    item.addEventListener("click", event => {
-      if (list.loaded) return;
+    if (!list.loaded) {
+      // NTSP = New Tab Slide Panel
+      const ntspTrigger = document.createElement("button");
+      ntspTrigger.className = "ntsp-trigger";
+      ntspTrigger.type = "button";
+      ntspTrigger.textContent = "⟩";
+      ntspTrigger.setAttribute("aria-label", "Show new tab slide panel");
 
-      const toggle = item.querySelector(".saved-list-slide-toggle");
-      const ntsp = item.querySelector(".ntsp");
+      const ntsp = document.createElement("div");
+      ntsp.className = "ntsp";
+      ntsp.setAttribute("aria-hidden", "true");
 
-      if (!toggle || !ntsp || event.target !== toggle) return;
+      ntspTrigger.addEventListener("click", event => {
+        event.stopPropagation();
 
-      const isOpen = item.classList.contains("ntsp-open");
+        const isOpen = item.classList.contains("ntsp-open");
 
-      document
-        .querySelectorAll(".saved-list-item.ntsp-open")
-        .forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove("ntsp-open");
+        document
+          .querySelectorAll(".saved-list-item.ntsp-open")
+          .forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove("ntsp-open");
 
-            const otherToggle =
-              otherItem.querySelector(".saved-list-slide-toggle");
+              const otherTrigger =
+                otherItem.querySelector(".ntsp-trigger");
 
-            const otherNtsp = otherItem.querySelector(".ntsp");
+              const otherNtsp =
+                otherItem.querySelector(".ntsp");
 
-            if (otherToggle) {
-              otherToggle.textContent = "⟩";
-              otherToggle.setAttribute(
-                "aria-label",
-                "Show new tab slide panel"
-              );
+              if (otherTrigger) {
+                otherTrigger.textContent = "⟩";
+                otherTrigger.setAttribute(
+                  "aria-label",
+                  "Show new tab slide panel"
+                );
+              }
+
+              if (otherNtsp) {
+                otherNtsp.setAttribute("aria-hidden", "true");
+              }
             }
+          });
 
-            if (otherNtsp) {
-              otherNtsp.setAttribute("aria-hidden", "true");
-            }
-          }
-        });
+        item.classList.toggle("ntsp-open", !isOpen);
 
-      item.classList.toggle("ntsp-open", !isOpen);
-      ntsp.setAttribute("aria-hidden", isOpen ? "true" : "false");
+        ntsp.setAttribute(
+          "aria-hidden",
+          isOpen ? "true" : "false"
+        );
 
-      toggle.textContent = isOpen ? "⟩" : "⟨";
-      toggle.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Show new tab slide panel"
-          : "Close new tab slide panel"
-      );
-    });
+        ntspTrigger.textContent = isOpen ? "⟩" : "⟨";
+        ntspTrigger.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Show new tab slide panel"
+            : "Close new tab slide panel"
+        );
+      });
+
+      item.appendChild(ntsp);
+      item.appendChild(ntspTrigger);
+    }
 
     if (list.loaded) {
       item.classList.add("saved-list-loaded");
