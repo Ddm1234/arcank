@@ -738,15 +738,14 @@ function renderSavedLists() {
     info.append(name, count);
     item.appendChild(info);
 
+    // NTSP = New Tab Slide Panel
+    // Every CSV tab keeps its own empty NTSP panel.
+    const ntsp = document.createElement("div");
+    ntsp.className = "ntsp";
+    ntsp.setAttribute("aria-hidden", "true");
+    item.appendChild(ntsp);
+
     if (!list.loaded) {
-      // NTSP = New Tab Slide Panel
-      // Empty for now. Content will be added later.
-      const ntsp = document.createElement("div");
-      ntsp.className = "ntsp";
-      ntsp.setAttribute("aria-hidden", "true");
-
-      item.appendChild(ntsp);
-
       const loadButton = document.createElement("button");
       loadButton.className = "saved-list-load";
       loadButton.textContent = "🔁";
@@ -769,9 +768,10 @@ function renderSavedLists() {
 
         selected.loaded = true;
 
-        saveSavedLists(updatedLists);
-
         const ntspWasOpen = item.classList.contains("ntsp-open");
+        const ntspListName = list.name;
+
+        saveSavedLists(updatedLists);
 
         batchPayments.value = selected.rows.join("\n");
         updateCsvPreview(selected.rows);
@@ -782,25 +782,14 @@ function renderSavedLists() {
 
         if (ntspWasOpen) {
           const newItem = [...document.querySelectorAll(".saved-list-item")]
-            .find(el => el.querySelector(".ntsp-trigger"));
+            .find(el => {
+              const name = el.querySelector(".saved-list-info strong");
+              return name &&
+                name.textContent === ntspListName + ".csv";
+            });
 
           if (newItem) {
             newItem.classList.add("ntsp-open");
-
-            const newNtsp = newItem.querySelector(".ntsp");
-            const newTrigger = newItem.querySelector(".ntsp-trigger");
-
-            if (newNtsp) {
-              newNtsp.setAttribute("aria-hidden", "false");
-            }
-
-            if (newTrigger) {
-              newTrigger.textContent = "⟩";
-              newTrigger.setAttribute(
-                "aria-label",
-                "Show new tab slide panel"
-              );
-            }
           }
         }
       });
