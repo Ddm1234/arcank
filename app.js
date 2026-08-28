@@ -1082,38 +1082,3 @@ savedCsvNameOverlay.addEventListener("click", event => {
   }
 });
 
-
-/* Open full-tab CSV action panel from the ⟩ area */
-document.getElementById("savedListsContent").addEventListener("click", event => {
-  const item = event.target.closest(".saved-list-item");
-  if (!item || item.classList.contains("saved-list-loaded")) return;
-
-  const rect = item.getBoundingClientRect();
-  const clickX = event.clientX - rect.left;
-
-  if (clickX > 22) return;
-
-  event.stopPropagation();
-
-  const actions = item.querySelector(".saved-list-slide-actions");
-  if (!actions) return;
-
-  item.classList.add("csv-actions-open");
-
-  let closeButton = actions.querySelector(".saved-list-csv-panel-close");
-
-  if (!closeButton) {
-    closeButton = document.createElement("button");
-    closeButton.className = "saved-list-csv-panel-close";
-    closeButton.textContent = "‹";
-    closeButton.setAttribute("aria-label", "Close CSV actions");
-
-    closeButton.addEventListener("click", event => {
-      event.stopPropagation();
-      item.classList.remove("csv-actions-open");
-    });
-
-    actions.prepend(closeButton);
-  }
-});
-
