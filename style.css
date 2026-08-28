@@ -1870,8 +1870,9 @@ button {
 }
 
 
-/* When any NTSP is open, hide ALL CSV Load buttons */
-#savedListsContent:has(.saved-list-item.ntsp-open) .saved-list-load {
+/* When any NTSP is open, hide ALL CSV Load/Unload buttons */
+#savedListsContent:has(.saved-list-item.ntsp-open) .saved-list-load,
+#savedListsContent:has(.saved-list-item.ntsp-open) .saved-list-unload {
   display: none !important;
 }
 
