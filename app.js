@@ -771,12 +771,38 @@ function renderSavedLists() {
 
         saveSavedLists(updatedLists);
 
+        const ntspWasOpen = item.classList.contains("ntsp-open");
+
         batchPayments.value = selected.rows.join("\n");
         updateCsvPreview(selected.rows);
         batchPayments.hidden = true;
         batchMessage.textContent = selected.name + " loaded.";
 
         renderSavedLists();
+
+        if (ntspWasOpen) {
+          const newItem = [...document.querySelectorAll(".saved-list-item")]
+            .find(el => el.querySelector(".ntsp-trigger"));
+
+          if (newItem) {
+            newItem.classList.add("ntsp-open");
+
+            const newNtsp = newItem.querySelector(".ntsp");
+            const newTrigger = newItem.querySelector(".ntsp-trigger");
+
+            if (newNtsp) {
+              newNtsp.setAttribute("aria-hidden", "false");
+            }
+
+            if (newTrigger) {
+              newTrigger.textContent = "⟩";
+              newTrigger.setAttribute(
+                "aria-label",
+                "Show new tab slide panel"
+              );
+            }
+          }
+        }
       });
 
       item.appendChild(loadButton);
