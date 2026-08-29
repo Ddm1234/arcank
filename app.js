@@ -9,6 +9,7 @@ const disconnectButton = document.getElementById("disconnectButton");
 const walletProfile = document.getElementById("walletProfile");
 const walletAvatar = document.getElementById("walletAvatar");
 const walletShortAddress = document.getElementById("walletShortAddress");
+const walletNetwork = document.getElementById("walletNetwork");
 const recipientInput = document.getElementById("recipient");
 const amountInput = document.getElementById("amount");
 const message = document.getElementById("message");
