@@ -126,11 +126,7 @@ connectButton.addEventListener("click", async () => {
       provider: walletProvider
     });
 
-    walletStatus.textContent =
-      "Connected: " +
-      walletAddress.slice(0, 6) +
-      "..." +
-      walletAddress.slice(-4);
+    walletStatus.textContent = "";
 
     connectButton.textContent = "Wallet Connected";
     connectButton.hidden = true;
