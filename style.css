@@ -2335,3 +2335,15 @@ body {
   line-height: 1 !important;
 }
 
+
+/* Wallet action colors */
+#walletSection #connectButton {
+  background: #16a34a !important;
+  color: #ffffff !important;
+}
+
+#walletSection #disconnectButton {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+}
+
