@@ -1955,3 +1955,11 @@ button {
   color: #000000 !important;
 }
 
+
+/* Rename popup input */
+#savedListRenameInput {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+}
+
