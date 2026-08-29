@@ -2201,3 +2201,17 @@ body {
   border-radius: 999px !important;
 }
 
+
+/* Wallet action button stays below the wallet profile */
+#connectButton,
+#disconnectButton {
+  width: auto !important;
+  min-width: 170px !important;
+  margin: 8px auto 0 !important;
+  display: block;
+}
+
+#connectButton[hidden],
+#disconnectButton[hidden] {
+  display: none !important;
+}
