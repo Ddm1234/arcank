@@ -2397,3 +2397,26 @@ header {
   margin-bottom: 0 !important;
 }
 
+
+/* FINAL: zero gap between ArcPay header and wallet section */
+header {
+  margin-bottom: 0 !important;
+}
+
+.container {
+  padding-top: 0 !important;
+}
+
+.card {
+  padding-top: 0 !important;
+}
+
+#walletSection {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#walletProfile {
+  margin-top: 0 !important;
+}
+
