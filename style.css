@@ -2462,3 +2462,13 @@ header {
   margin-bottom: 0 !important;
 }
 
+
+/* FINAL: remove gap directly below black ArcPay header */
+.card .subtitle {
+  margin-bottom: 0 !important;
+}
+
+#walletSection {
+  margin-top: 0 !important;
+}
+
