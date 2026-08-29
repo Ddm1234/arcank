@@ -2014,3 +2014,24 @@ body {
   background-color: transparent !important;
 }
 
+
+/* Final homepage grey background */
+html,
+body {
+  background: #e5e7eb !important;
+}
+
+body {
+  color: #111827;
+}
+
+.container {
+  background: #e5e7eb !important;
+}
+
+.card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
