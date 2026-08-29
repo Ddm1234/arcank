@@ -77,53 +77,25 @@ function updateCsvPreview(rows) {
   csvPreview.hidden = false;
 }
 
-async function restoreWalletOnLoad() {
-  try {
-    if (!window.ethereum) return;
+function restoreWalletOnLoad() {
+  // Always start the page in the disconnected UI state.
+  walletProvider = null;
+  walletAddress = null;
+  adapter = null;
 
-    const accounts = await window.ethereum.request({
-      method: "eth_accounts"
-    });
+  walletProfile.hidden = false;
+  walletAvatar.innerHTML = "";
+  walletShortAddress.textContent = "***************";
+  walletNetwork.textContent = "..............";
 
-    if (!accounts || accounts.length === 0) return;
+  connectButton.textContent = "Connect Wallet";
+  connectButton.hidden = false;
+  connectButton.style.display = "";
 
-    walletProvider = window.ethereum;
-    walletAddress = accounts[0];
+  disconnectButton.hidden = true;
+  disconnectButton.style.display = "none";
 
-    adapter = await createViemAdapterFromProvider({
-      provider: walletProvider
-    });
-
-    walletShortAddress.textContent =
-      walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
-
-    walletNetwork.textContent = "Arc Testnet";
-    generateWalletAvatar(walletAddress);
-
-    walletProfile.hidden = false;
-    connectButton.hidden = true;
-    connectButton.style.display = "none";
-    disconnectButton.hidden = false;
-    disconnectButton.style.display = "block";
-    walletStatus.textContent = "";
-
-    console.log("Wallet restored:", walletAddress);
-  } catch (error) {
-    console.warn("Could not restore wallet:", error);
-  }
-
-  // Default not-connected profile state
-  if (!walletAddress) {
-    walletProfile.hidden = false;
-    walletAvatar.innerHTML = "";
-    walletShortAddress.textContent = "***************";
-    walletNetwork.textContent = "..............";
-    connectButton.textContent = "Connect Wallet";
-    connectButton.hidden = false;
-    connectButton.style.display = "";
-    disconnectButton.hidden = true;
-    disconnectButton.style.display = "none";
-  }
+  walletStatus.textContent = "";
 }
 
 connectButton.addEventListener("click", async () => {
