@@ -1935,3 +1935,16 @@ button {
   display: none !important;
 }
 
+
+/* Hide every CSV Load/Unload button while any NTSP is open */
+.saved-list-item.ntsp-open ~ .saved-list-item .saved-list-load,
+.saved-list-item.ntsp-open ~ .saved-list-item .saved-list-unload,
+.saved-list-item:has(~ .saved-list-item.ntsp-open) .saved-list-load,
+.saved-list-item:has(~ .saved-list-item.ntsp-open) .saved-list-unload,
+.saved-list-item.ntsp-open .saved-list-load,
+.saved-list-item.ntsp-open .saved-list-unload {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
