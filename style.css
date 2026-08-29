@@ -1999,3 +1999,18 @@ body {
 .container {
   background: #f3f4f6 !important;
 }
+
+/* Plain grey page — no outer card */
+html,
+body {
+  background-color: #e5e7eb !important;
+}
+
+.container {
+  background-color: #e5e7eb !important;
+}
+
+.card {
+  background-color: transparent !important;
+}
+
