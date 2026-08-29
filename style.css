@@ -2246,3 +2246,23 @@ body {
 #walletProfile {
   margin-top: 0 !important;
 }
+
+/* Unified wallet section */
+#walletProfile {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 12px 0 8px !important;
+  background: transparent !important;
+}
+
+#connectButton,
+#disconnectButton {
+  border-radius: 0 !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
