@@ -2281,3 +2281,43 @@ body {
   padding: 10px 14px !important;
 }
 
+
+/* Final unified wallet section */
+#walletSection {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 72px !important;
+  padding: 12px 14px !important;
+  margin: 0 !important;
+  background: #f8fafc !important;
+  box-sizing: border-box !important;
+}
+
+#walletSection #walletProfile {
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+#walletSection #connectButton,
+#walletSection #disconnectButton {
+  flex: 0 0 120px !important;
+  width: 120px !important;
+  min-width: 120px !important;
+  height: 36px !important;
+  margin: 0 0 0 14px !important;
+  padding: 8px 10px !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#walletSection #connectButton[hidden],
+#walletSection #disconnectButton[hidden] {
+  display: none !important;
+}
