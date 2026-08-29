@@ -1899,3 +1899,39 @@ button {
   margin: 0 !important;
 }
 
+
+/* Hide Load/Unload button while NTSP is open */
+.saved-list-item.ntsp-open .saved-list-load,
+.saved-list-item.ntsp-open .saved-list-unload {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Keep NTSP Delete/Rename buttons centered */
+.saved-list-item .ntsp-actions {
+  top: 50% !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0 !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+}
+
+.saved-list-item .ntsp-action {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+}
+
+.saved-list-item .ntsp-action-label {
+  display: none !important;
+}
+
