@@ -2165,3 +2165,8 @@ body {
   margin: 6px 0 12px;
 }
 
+
+/* Keep wallet profile visible when disconnected */
+#walletProfile[hidden] {
+  display: flex !important;
+}
