@@ -2067,3 +2067,36 @@ body {
   padding: 28px 0 !important;
 }
 
+
+/* Grey homepage — improve text visibility */
+.container {
+  color: #111827 !important;
+}
+
+.container h2 {
+  color: #111827 !important;
+}
+
+.container label {
+  color: #374151 !important;
+}
+
+.container .subtitle {
+  color: #4b5563 !important;
+}
+
+.container .batch-help {
+  color: #4b5563 !important;
+}
+
+#walletStatus,
+#message,
+#batchMessage,
+#csvSummary {
+  color: #374151 !important;
+}
+
+.container .eyebrow {
+  color: #374151 !important;
+}
+
