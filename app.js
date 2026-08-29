@@ -75,6 +75,41 @@ function updateCsvPreview(rows) {
   csvTotalAmount.textContent = total.toLocaleString(undefined, { maximumFractionDigits: 6 }) + " USDC";
   csvPreview.hidden = false;
 }
+
+async function restoreWalletOnLoad() {
+  try {
+    if (!window.ethereum) return;
+
+    const accounts = await window.ethereum.request({
+      method: "eth_accounts"
+    });
+
+    if (!accounts || accounts.length === 0) return;
+
+    walletProvider = window.ethereum;
+    walletAddress = accounts[0];
+
+    adapter = await createViemAdapterFromProvider({
+      provider: walletProvider
+    });
+
+    walletShortAddress.textContent =
+      walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
+
+    walletNetwork.textContent = "Arc Testnet";
+    generateWalletAvatar(walletAddress);
+
+    walletProfile.hidden = false;
+    connectButton.hidden = true;
+    disconnectButton.hidden = false;
+    walletStatus.textContent = "";
+
+    console.log("Wallet restored:", walletAddress);
+  } catch (error) {
+    console.warn("Could not restore wallet:", error);
+  }
+}
+
 connectButton.addEventListener("click", async () => {
   try {
     message.textContent = "Connecting wallet...";
@@ -1239,3 +1274,5 @@ savedListsContent.addEventListener("click", event => {
   // This handler intentionally does nothing.
 });
 
+
+restoreWalletOnLoad();
