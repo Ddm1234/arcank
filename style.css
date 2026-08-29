@@ -1983,3 +1983,7 @@ body {
     padding: 0 !important;
   }
 }
+/* Plain grey homepage */
+body {
+  background: #f3f4f6 !important;
+}
