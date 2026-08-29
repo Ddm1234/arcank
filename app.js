@@ -101,7 +101,9 @@ async function restoreWalletOnLoad() {
 
     walletProfile.hidden = false;
     connectButton.hidden = true;
+    connectButton.style.display = "none";
     disconnectButton.hidden = false;
+    disconnectButton.style.display = "block";
     walletStatus.textContent = "";
 
     console.log("Wallet restored:", walletAddress);
