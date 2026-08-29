@@ -2233,3 +2233,16 @@ body {
 #disconnectButton {
   margin-top: 6px !important;
 }
+
+/* Exactly 10px gap below ArcPay header */
+.container {
+  padding-top: 78px !important;
+}
+
+.card {
+  padding-top: 0 !important;
+}
+
+#walletProfile {
+  margin-top: 0 !important;
+}
