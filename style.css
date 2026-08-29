@@ -1948,3 +1948,10 @@ button {
   pointer-events: none !important;
 }
 
+
+/* NTSP Delete/Rename buttons — black text */
+.ntsp-db,
+.ntsp-rb {
+  color: #000000 !important;
+}
+
