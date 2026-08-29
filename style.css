@@ -1864,3 +1864,38 @@ button {
 }
 
 /* NTSP END */
+
+/* Center NTSP Delete/Rename buttons inside 236px × 50px panel */
+.ntsp-actions {
+  top: 50% !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0 !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+}
+
+.ntsp-action {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+}
+
+.ntsp-action-label {
+  display: none !important;
+}
+
+.ntsp-db,
+.ntsp-rb {
+  width: 60px !important;
+  height: 28px !important;
+  margin: 0 !important;
+}
+
