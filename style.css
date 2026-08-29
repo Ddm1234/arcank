@@ -2420,3 +2420,27 @@ header {
   margin-top: 0 !important;
 }
 
+
+/* FINAL: wallet starts directly below fixed ArcPay header */
+.container {
+  padding-top: 78px !important;
+}
+
+.card {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+header {
+  margin-bottom: 0 !important;
+}
+
+#walletSection {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#walletProfile {
+  margin-top: 0 !important;
+}
+
