@@ -2321,3 +2321,17 @@ body {
 #walletSection #disconnectButton[hidden] {
   display: none !important;
 }
+
+/* Wallet action buttons — clean single-line appearance */
+#walletSection #connectButton,
+#walletSection #disconnectButton {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+}
+
