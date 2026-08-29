@@ -2472,3 +2472,25 @@ header {
   margin-top: 0 !important;
 }
 
+
+/* FINAL: wallet directly below fixed ArcPay header */
+.homepage-header {
+  height: 72px !important;
+  min-height: 72px !important;
+  box-sizing: border-box !important;
+}
+
+.container {
+  padding-top: 72px !important;
+}
+
+.card {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#walletSection {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
