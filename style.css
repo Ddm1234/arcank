@@ -1812,7 +1812,6 @@ button {
   justify-content: center !important;
   gap: 18px !important;
   box-sizing: border-box !important;
-  transform: translateY(-10px) !important;
 }
 
 .ntsp-action {
