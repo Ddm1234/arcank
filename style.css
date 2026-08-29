@@ -2362,3 +2362,18 @@ body {
   white-space: nowrap !important;
 }
 
+
+/* Wallet buttons — enough width for full labels */
+#walletSection #connectButton,
+#walletSection #disconnectButton {
+  flex: 0 0 110px !important;
+  width: 110px !important;
+  min-width: 110px !important;
+  height: 32px !important;
+  padding: 4px 6px !important;
+  margin-left: 10px !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
