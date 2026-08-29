@@ -807,6 +807,16 @@ function renderSavedLists() {
       dbButton.textContent = "Delete";
       dbButton.setAttribute("aria-label", "Delete CSV");
 
+      dbButton.addEventListener("click", event => {
+        event.stopPropagation();
+
+        activeSavedList = list;
+        savedListDeleteTitle.textContent = "Delete: " + list.name;
+        savedListDeleteText.textContent =
+          "Are you sure you want to delete this CSV?";
+        savedListDeleteOverlay.hidden = false;
+      });
+
       dbWrap.append(dbButton);
 
       const rbWrap = document.createElement("div");
