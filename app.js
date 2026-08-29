@@ -829,6 +829,21 @@ function renderSavedLists() {
       rbButton.textContent = "Rename";
       rbButton.setAttribute("aria-label", "Rename CSV");
 
+      rbButton.addEventListener("click", event => {
+        event.stopPropagation();
+
+        activeSavedList = list;
+        savedListRenameTitle.textContent = "Rename: " + list.name;
+        savedListRenameInput.value = list.name;
+        savedListRenameInput.setCustomValidity("");
+        savedListRenameOverlay.hidden = false;
+
+        requestAnimationFrame(() => {
+          savedListRenameInput.focus();
+          savedListRenameInput.select();
+        });
+      });
+
       rbWrap.append(rbButton);
 
       ntspActions.append(dbWrap, rbWrap);
