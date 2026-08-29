@@ -2456,3 +2456,8 @@ header {
   transform: translateY(-40px) !important;
 }
 
+/* Remove temporary wallet positioning */
+#walletSection {
+  margin-top: 0 !important;
+  transform: none !important;
+}
