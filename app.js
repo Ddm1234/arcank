@@ -435,8 +435,8 @@ csvFile.addEventListener("change", async () => {
       throw new Error("CSV contains no recipients.");
     }
 
-    if (rows.length > 100) {
-      throw new Error("Maximum 100 recipients allowed.");
+    if (rows.length > 1000) {
+      throw new Error("Maximum 1000 recipients allowed.");
     }
 
     const validRows = [];
@@ -1105,8 +1105,8 @@ savedCsvFile.addEventListener("change", async () => {
       throw new Error("CSV contains no recipients.");
     }
 
-    if (rows.length > 100) {
-      throw new Error("Maximum 100 recipients allowed.");
+    if (rows.length > 1000) {
+      throw new Error("Maximum 1000 recipients allowed.");
     }
 
     const validRows = [];
