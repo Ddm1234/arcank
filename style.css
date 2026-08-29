@@ -2266,3 +2266,18 @@ body {
   box-sizing: border-box !important;
 }
 
+
+/* Wallet section unified background */
+#walletProfile {
+  background: #f8fafc !important;
+  margin: 0 !important;
+  padding: 14px 14px 8px !important;
+}
+
+#connectButton:not([hidden]),
+#disconnectButton:not([hidden]) {
+  background: #f8fafc !important;
+  margin: 0 !important;
+  padding: 10px 14px !important;
+}
+
