@@ -141,6 +141,24 @@ connectButton.addEventListener("click", async () => {
     sendButton.disabled = false;
     batchSendButton.disabled = false;
     renderSavedLists();
+
+// TEMP: NTSP dimension measurement
+setTimeout(() => {
+  const ntsp = document.querySelector(".ntsp");
+  if (ntsp) {
+    const rect = ntsp.getBoundingClientRect();
+    console.log("=== NTSP EXACT DIMENSIONS ===");
+    console.log("Width:", rect.width + "px");
+    console.log("Height:", rect.height + "px");
+    console.log("Top:", rect.top + "px");
+    console.log("Bottom:", rect.bottom + "px");
+    console.log("Left:", rect.left + "px");
+    console.log("Right:", rect.right + "px");
+  } else {
+    console.log("NTSP not found.");
+  }
+}, 1000);
+
 setupSavedListsStretch();
     message.textContent = "Ready to send USDC on Arc Testnet.";
   } catch (error) {
