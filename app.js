@@ -111,6 +111,19 @@ async function restoreWalletOnLoad() {
   } catch (error) {
     console.warn("Could not restore wallet:", error);
   }
+
+  // Default not-connected profile state
+  if (!walletAddress) {
+    walletProfile.hidden = false;
+    walletAvatar.innerHTML = "";
+    walletShortAddress.textContent = "***************";
+    walletNetwork.textContent = "..............";
+    connectButton.textContent = "Connect Wallet";
+    connectButton.hidden = false;
+    connectButton.style.display = "";
+    disconnectButton.hidden = true;
+    disconnectButton.style.display = "none";
+  }
 }
 
 connectButton.addEventListener("click", async () => {
@@ -523,11 +536,16 @@ disconnectButton.addEventListener("click", () => {
   walletAddress = null;
   adapter = null;
 
-  walletStatus.textContent = "Wallet not connected";
+  walletStatus.textContent = "";
+  walletAvatar.innerHTML = "";
+  walletShortAddress.textContent = "***************";
+  walletNetwork.textContent = "..............";
   connectButton.textContent = "Connect Wallet";
   connectButton.hidden = false;
+  connectButton.style.display = "";
   disconnectButton.hidden = true;
-  walletProfile.hidden = true;
+  disconnectButton.style.display = "none";
+  walletProfile.hidden = false;
 
   sendButton.disabled = true;
   batchSendButton.disabled = true;
