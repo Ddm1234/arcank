@@ -2183,3 +2183,21 @@ body {
   box-sizing: border-box !important;
 }
 
+
+/* Wallet button state — only one button visible */
+#connectButton[hidden],
+#disconnectButton[hidden] {
+  display: none !important;
+}
+
+#connectButton:not([hidden]),
+#disconnectButton:not([hidden]) {
+  display: block !important;
+  width: auto !important;
+  min-width: 170px !important;
+  padding: 11px 20px !important;
+  margin: 8px auto 0 !important;
+  box-sizing: border-box !important;
+  border-radius: 999px !important;
+}
+
