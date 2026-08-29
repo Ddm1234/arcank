@@ -2215,3 +2215,21 @@ body {
 #disconnectButton[hidden] {
   display: none !important;
 }
+
+/* Reduce gap between ArcPay header and wallet section */
+.container {
+  padding-top: 72px !important;
+}
+
+.card {
+  padding-top: 8px !important;
+}
+
+#walletProfile {
+  margin-top: 4px !important;
+}
+
+#connectButton,
+#disconnectButton {
+  margin-top: 6px !important;
+}
