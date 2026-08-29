@@ -10,6 +10,7 @@ const walletProfile = document.getElementById("walletProfile");
 const walletAvatar = document.getElementById("walletAvatar");
 const walletShortAddress = document.getElementById("walletShortAddress");
 const walletNetwork = document.getElementById("walletNetwork");
+const walletBalance = document.getElementById("walletBalance");
 const recipientInput = document.getElementById("recipient");
 const amountInput = document.getElementById("amount");
 const message = document.getElementById("message");
@@ -33,6 +34,27 @@ let walletAddress = null;
 let adapter = null;
 
 const kit = new AppKit();
+async function updateWalletBalance() {
+  if (!walletProvider || !walletAddress || !walletBalance) return;
+
+  try {
+    const balanceHex = await walletProvider.request({
+      method: "eth_getBalance",
+      params: [walletAddress, "latest"]
+    });
+
+    const balance = Number(BigInt(balanceHex)) / 1e18;
+
+    walletBalance.textContent =
+      balance.toLocaleString(undefined, {
+        maximumFractionDigits: 6
+      }) + " USDC";
+  } catch (error) {
+    console.warn("Could not read wallet balance:", error);
+    walletBalance.textContent = "— USDC";
+  }
+}
+
 function generateWalletAvatar(address) {
   const hash = address.slice(2).toLowerCase();
   let html = "<div style=\"display:grid;grid-template-columns:repeat(5,1fr);width:100%;height:100%;gap:2px;padding:5px;\">";
@@ -157,6 +179,7 @@ connectButton.addEventListener("click", async () => {
     disconnectButton.hidden = false;
     walletShortAddress.textContent = walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
     generateWalletAvatar(walletAddress);
+    await updateWalletBalance();
     walletProfile.hidden = false;
     sendButton.disabled = false;
     batchSendButton.disabled = false;
