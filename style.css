@@ -2444,3 +2444,21 @@ header {
   margin-top: 0 !important;
 }
 
+
+/* FINAL wallet/header alignment */
+.container {
+  padding-top: 0 !important;
+}
+
+.card {
+  padding-top: 0 !important;
+}
+
+#walletSection {
+  margin-top: -10px !important;
+}
+
+header {
+  margin-bottom: 0 !important;
+}
+
