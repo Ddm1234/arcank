@@ -178,6 +178,7 @@ connectButton.addEventListener("click", async () => {
     });
 
     walletStatus.textContent = "";
+    walletNetwork.textContent = "Arc Testnet";
 
     connectButton.textContent = "Wallet Connected";
     connectButton.hidden = true;
