@@ -2852,3 +2852,15 @@ p.eyebrow:first-of-type {
   opacity: 1 !important;
 }
 
+
+/* Loaded wallet rows - readable text */
+#batchPaymentSection #csvPreviewList .csv-preview-address {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+#batchPaymentSection #csvPreviewList .csv-preview-amount {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
