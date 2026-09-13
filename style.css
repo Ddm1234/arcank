@@ -2894,3 +2894,15 @@ p.eyebrow:first-of-type {
   display: none !important;
 }
 
+
+#batchPaymentSection .batch-sticky-summary .eyebrow {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  background: #D4AF37 !important;
+  padding: 14px 18px !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+  letter-spacing: 1px !important;
+}
+
