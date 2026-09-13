@@ -2971,3 +2971,18 @@ p.eyebrow:first-of-type {
   margin-right: auto !important;
 }
 
+
+#batchPaymentSection #batchSendButton:disabled {
+  background: #6b7280 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  cursor: not-allowed !important;
+}
+
+#batchPaymentSection #batchSendButton:not(:disabled) {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
