@@ -3043,3 +3043,9 @@ p.eyebrow:first-of-type {
   color: #ffffff !important;
 }
 
+
+#batchPaymentSection .batch-sticky-summary #batchMessage {
+  color: #22c55e !important;
+  font-weight: 600 !important;
+}
+
