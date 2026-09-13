@@ -3211,3 +3211,18 @@ body {
   margin-top: 0 !important;
 }
 
+
+/* FINAL: batch summary touches the fixed header */
+#batchPaymentSection .batch-sticky-summary {
+  position: sticky !important;
+  top: 72px !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  border-top: 0 !important;
+  transform: none !important;
+}
+
+#batchPaymentSection .batch-sticky-summary .eyebrow {
+  margin-top: 0 !important;
+}
+
