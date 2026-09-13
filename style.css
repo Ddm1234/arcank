@@ -2479,3 +2479,8 @@ p.eyebrow:first-of-type + label {
   display: none !important;
 }
 
+
+/* Hide only the Single Payment heading */
+p.eyebrow:first-of-type {
+  display: none !important;
+}
