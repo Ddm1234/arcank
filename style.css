@@ -2953,3 +2953,21 @@ p.eyebrow:first-of-type {
   margin: 10px auto 0 !important;
 }
 
+
+#batchPaymentSection .batch-sticky-summary {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+#batchPaymentSection .batch-sticky-summary .csv-preview-header,
+#batchPaymentSection .batch-sticky-summary .csv-preview-total {
+  width: 100% !important;
+}
+
+#batchPaymentSection #batchSendButton {
+  align-self: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
