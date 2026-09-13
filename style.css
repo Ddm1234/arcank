@@ -2864,3 +2864,15 @@ p.eyebrow:first-of-type {
   opacity: 1 !important;
 }
 
+
+/* CSV loaded message - place clearly near Batch Payment */
+#batchPaymentSection .batch-sticky-summary #csvSummary {
+  display: block !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
