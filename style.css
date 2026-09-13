@@ -3000,3 +3000,28 @@ p.eyebrow:first-of-type {
   order: 4 !important;
 }
 
+
+#batchPaymentSection .batch-sticky-summary {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#batchPaymentSection .batch-sticky-summary .csv-preview-header {
+  order: 1 !important;
+}
+
+#batchPaymentSection .batch-sticky-summary .csv-preview-total {
+  order: 2 !important;
+}
+
+#batchPaymentSection .batch-sticky-summary #batchMessage {
+  order: 3 !important;
+  width: 100% !important;
+  text-align: right !important;
+  margin: 8px 0 0 !important;
+}
+
+#batchPaymentSection .batch-sticky-summary #batchSendButton {
+  order: 4 !important;
+}
+
