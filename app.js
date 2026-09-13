@@ -144,6 +144,7 @@ async function restoreWalletOnLoad() {
     }
 
     walletAddress = accounts[0];
+    clearLoadedSavedLists();
 
     adapter = await createViemAdapterFromProvider({
       provider: walletProvider
