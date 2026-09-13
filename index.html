@@ -136,20 +136,26 @@
       <p id="csvSummary"></p>
       <textarea id="batchPayments" hidden></textarea>
       <div id="csvPreview" hidden>
-        <div class="csv-preview-header">
-          <strong>Batch Preview</strong>
-          <span id="csvRecipientCount"></span>
-        </div>
-        <div id="csvPreviewList"></div>
-        <div class="csv-preview-total">
-          <span>Total</span>
-          <strong id="csvTotalAmount">0 USDC</strong>
-        </div>
-      </div>
 
-      <button id="batchSendButton" disabled>
-        Send Batch
-      </button>
+        <div class="batch-sticky-summary">
+          <div class="csv-preview-header">
+            <strong>Loaded wallets</strong>
+            <span id="csvRecipientCount"></span>
+          </div>
+
+          <div class="csv-preview-total">
+            <span>Total payment</span>
+            <strong id="csvTotalAmount">0 USDC</strong>
+          </div>
+
+          <button id="batchSendButton" disabled>
+            Send Batch
+          </button>
+        </div>
+
+        <div id="csvPreviewList"></div>
+
+      </div>
 
       <p id="batchMessage"></p>
 

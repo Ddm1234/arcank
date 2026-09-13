@@ -2573,3 +2573,82 @@ p.eyebrow:first-of-type {
   }
 }
 
+
+/* =========================================================
+   FINAL BATCH PAYMENT LAYOUT
+   ========================================================= */
+
+#batchPaymentSection {
+  position: relative;
+  background: inherit;
+}
+
+/* The whole preview becomes the batch payment component */
+#csvPreview:not([hidden]) {
+  display: block;
+  margin: 14px 0 18px;
+  padding: 0;
+  border: 1px solid #252b33;
+  border-radius: 14px;
+  background: #0d1117;
+  overflow: hidden;
+}
+
+/* Sticky Batch Payment summary */
+#batchPaymentSection .batch-sticky-summary {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 14px;
+  background: #0d1117;
+  border-bottom: 1px solid #252b33;
+}
+
+/* Loaded wallets + recipient count */
+#batchPaymentSection .csv-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Total payment */
+#batchPaymentSection .csv-preview-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+/* Send Batch belongs to the sticky summary */
+#batchPaymentSection #batchSendButton {
+  position: relative;
+  z-index: 21;
+  width: 100%;
+  min-width: 0;
+  margin: 14px 0 0;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+/* Only the wallet list scrolls */
+#batchPaymentSection #csvPreviewList {
+  max-height: 260px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 14px;
+  border: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #batchPaymentSection #csvPreviewList {
+    max-height: 240px;
+  }
+}
+
