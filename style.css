@@ -2986,3 +2986,17 @@ p.eyebrow:first-of-type {
   cursor: pointer !important;
 }
 
+
+#batchPaymentSection .batch-sticky-summary {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#batchPaymentSection .batch-sticky-summary #batchMessage {
+  order: 3 !important;
+}
+
+#batchPaymentSection .batch-sticky-summary #batchSendButton {
+  order: 4 !important;
+}
+
