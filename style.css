@@ -3182,3 +3182,21 @@ body {
   overflow: visible !important;
 }
 
+
+/* CSV list panel must stay above the batch sticky summary */
+.saved-lists-panel {
+  z-index: 20000 !important;
+}
+
+.saved-lists-button {
+  z-index: 20001 !important;
+}
+
+.saved-list-action-overlay {
+  z-index: 30000 !important;
+}
+
+#batchPaymentSection .batch-sticky-summary {
+  z-index: 1000 !important;
+}
+
