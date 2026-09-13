@@ -978,8 +978,7 @@ function renderSavedLists() {
         batchPayments.value = "";
         updateCsvPreview([]);
 
-        batchMessage.textContent =
-          selected.name + " unloaded.";
+        batchMessage.textContent = "";
 
         renderSavedLists();
       });
