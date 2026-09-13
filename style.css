@@ -2888,3 +2888,9 @@ p.eyebrow:first-of-type {
   opacity: 1 !important;
 }
 
+
+/* Keep disconnect button in DOM for JavaScript, but never show it */
+#disconnectButton {
+  display: none !important;
+}
+
