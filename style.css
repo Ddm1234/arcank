@@ -2484,3 +2484,92 @@ p.eyebrow:first-of-type + label {
 p.eyebrow:first-of-type {
   display: none !important;
 }
+
+/* =========================================================
+   Batch Payment - Sticky Summary + Independent Wallet Scroll
+   ========================================================= */
+
+#batchPaymentSection {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: inherit;
+  padding-top: 8px;
+}
+
+/* Make the batch preview behave as part of the main layout */
+#csvPreview:not([hidden]) {
+  display: contents;
+}
+
+/* Batch Payment heading */
+#batchPaymentSection > .eyebrow {
+  margin-bottom: 12px;
+}
+
+/* Loaded wallet heading + recipient count */
+#batchPaymentSection .csv-preview-header {
+  order: 2;
+  margin: 0;
+  padding: 10px 0;
+}
+
+/* Wallet list */
+#batchPaymentSection #csvPreviewList {
+  order: 5;
+  max-height: 260px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid #252b33;
+  border-bottom: 1px solid #252b33;
+  padding: 0 10px;
+  margin: 0;
+}
+
+/* Total payment */
+#batchPaymentSection .csv-preview-total {
+  order: 3;
+  margin: 0;
+  padding: 10px 0;
+}
+
+/* Batch Send button */
+#batchPaymentSection #batchSendButton {
+  order: 4;
+  position: relative;
+  z-index: 101;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Batch status message */
+#batchPaymentSection #batchMessage {
+  order: 6;
+}
+
+/* Keep CSV controls/summary in the normal flow */
+#batchPaymentSection #csvFile,
+#batchPaymentSection #csvSummary,
+#batchPaymentSection #batchPayments {
+  order: 1;
+}
+
+/* One consistent visual background */
+#batchPaymentSection,
+#batchPaymentSection #csvPreview {
+  background: inherit;
+}
+
+/* Cleaner loaded-wallet area */
+#batchPaymentSection #csvPreviewList {
+  border-radius: 10px;
+}
+
+/* Mobile-friendly wallet scrolling */
+@media (max-width: 600px) {
+  #batchPaymentSection #csvPreviewList {
+    max-height: 240px;
+  }
+}
+
