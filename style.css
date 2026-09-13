@@ -3049,3 +3049,10 @@ p.eyebrow:first-of-type {
   font-weight: 600 !important;
 }
 
+
+#batchPaymentSection .batch-sticky-summary .eyebrow {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
