@@ -2837,3 +2837,18 @@ p.eyebrow:first-of-type {
   }
 }
 
+
+/* Batch Payment summary - force readable text */
+#batchPaymentSection .batch-sticky-summary,
+#batchPaymentSection .batch-sticky-summary .eyebrow,
+#batchPaymentSection .batch-sticky-summary strong,
+#batchPaymentSection .batch-sticky-summary span {
+  color: #ffffff !important;
+}
+
+#batchPaymentSection .batch-sticky-summary #csvRecipientCount,
+#batchPaymentSection .batch-sticky-summary #csvTotalAmount {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
