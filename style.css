@@ -2876,3 +2876,15 @@ p.eyebrow:first-of-type {
   opacity: 1 !important;
 }
 
+
+/* Loaded CSV name/status inside Batch Payment sticky area */
+#batchPaymentSection .batch-sticky-summary #batchMessage {
+  display: block !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
