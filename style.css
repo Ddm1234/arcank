@@ -3084,3 +3084,37 @@ p.eyebrow:first-of-type {
   z-index: 100 !important;
 }
 
+
+/* FINAL FIX: normal page scrolling, only batch summary is sticky */
+
+#walletSection {
+  position: static !important;
+  transform: none !important;
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+#batchPaymentSection {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+#batchPaymentSection #csvPreviewList {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  overflow-x: visible !important;
+}
+
+#batchPaymentSection .batch-sticky-summary {
+  position: sticky !important;
+  top: 72px !important;
+  z-index: 100 !important;
+}
+
