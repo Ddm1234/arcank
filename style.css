@@ -2472,3 +2472,10 @@ label[for="amount"] {
   display: none !important;
 }
 
+
+/* Hide Single Payment heading and separator */
+p.eyebrow:first-of-type,
+p.eyebrow:first-of-type + label {
+  display: none !important;
+}
+
