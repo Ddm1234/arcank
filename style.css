@@ -3056,3 +3056,8 @@ p.eyebrow:first-of-type {
   border-radius: 0 !important;
 }
 
+
+#batchPaymentSection .batch-sticky-summary .eyebrow {
+  color: #D4AF37 !important;
+}
+
