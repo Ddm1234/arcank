@@ -3118,3 +3118,30 @@ p.eyebrow:first-of-type {
   z-index: 100 !important;
 }
 
+
+/* FINAL BATCH LAYOUT */
+
+#batchPaymentSection {
+  position: static !important;
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+#batchPaymentSection .batch-sticky-summary {
+  position: sticky !important;
+  top: 68px !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  background: #12161c !important;
+  padding: 10px 0 14px !important;
+}
+
+#batchPaymentSection #csvPreviewList {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  overflow-x: visible !important;
+}
+
