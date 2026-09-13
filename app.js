@@ -99,25 +99,95 @@ function updateCsvPreview(rows) {
   csvPreview.hidden = false;
 }
 
-function restoreWalletOnLoad() {
-  // Always start the page in the disconnected UI state.
+async function restoreWalletOnLoad() {
   walletProvider = null;
   walletAddress = null;
   adapter = null;
 
-  walletProfile.hidden = false;
-  walletAvatar.innerHTML = "";
-  walletShortAddress.textContent = "***************";
-  walletNetwork.textContent = "..............";
+  if (!window.ethereum) {
+    walletProfile.hidden = false;
+    walletAvatar.innerHTML = "";
+    walletShortAddress.textContent = "***************";
+    walletNetwork.textContent = "..............";
+    connectButton.textContent = "Connect Wallet";
+    connectButton.hidden = false;
+    connectButton.style.display = "";
+    disconnectButton.hidden = true;
+    disconnectButton.style.display = "none";
+    walletStatus.textContent = "";
+    return;
+  }
 
-  connectButton.textContent = "Connect Wallet";
-  connectButton.hidden = false;
-  connectButton.style.display = "";
+  try {
+    walletProvider = window.ethereum;
 
-  disconnectButton.hidden = true;
-  disconnectButton.style.display = "none";
+    const accounts = await walletProvider.request({
+      method: "eth_accounts"
+    });
 
-  walletStatus.textContent = "";
+    if (!accounts || !accounts.length) {
+      walletProvider = null;
+      walletAddress = null;
+      adapter = null;
+
+      walletProfile.hidden = false;
+      walletAvatar.innerHTML = "";
+      walletShortAddress.textContent = "***************";
+      walletNetwork.textContent = "..............";
+      connectButton.textContent = "Connect Wallet";
+      connectButton.hidden = false;
+      connectButton.style.display = "";
+      disconnectButton.hidden = true;
+      disconnectButton.style.display = "none";
+      walletStatus.textContent = "";
+      return;
+    }
+
+    walletAddress = accounts[0];
+
+    adapter = await createViemAdapterFromProvider({
+      provider: walletProvider
+    });
+
+    walletStatus.textContent = "";
+    walletNetwork.textContent = "Arc Testnet";
+
+    connectButton.textContent = "Wallet Connected";
+    connectButton.hidden = true;
+    disconnectButton.hidden = true;
+    disconnectButton.style.display = "none";
+
+    walletShortAddress.textContent =
+      walletAddress.slice(0, 6) + "..." + walletAddress.slice(-4);
+
+    generateWalletAvatar(walletAddress);
+    await updateWalletBalance();
+
+    walletProfile.hidden = false;
+    sendButton.disabled = false;
+    batchSendButton.disabled = false;
+
+    renderSavedLists();
+
+    message.textContent = "Wallet connected.";
+  } catch (error) {
+    console.error("Wallet restore failed:", error);
+
+    walletProvider = null;
+    walletAddress = null;
+    adapter = null;
+
+    walletProfile.hidden = false;
+    walletAvatar.innerHTML = "";
+    walletShortAddress.textContent = "***************";
+    walletNetwork.textContent = "..............";
+    connectButton.textContent = "Connect Wallet";
+    connectButton.hidden = false;
+    connectButton.style.display = "";
+    disconnectButton.hidden = true;
+    disconnectButton.style.display = "none";
+    walletStatus.textContent = "";
+  }
 }
 
 connectButton.addEventListener("click", async () => {
