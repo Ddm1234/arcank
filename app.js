@@ -166,7 +166,7 @@ async function restoreWalletOnLoad() {
 
     walletProfile.hidden = false;
     sendButton.disabled = false;
-    batchSendButton.disabled = false;
+    batchSendButton.disabled = !getSavedLists().some(list => list.loaded);
 
     renderSavedLists();
 
@@ -253,7 +253,7 @@ connectButton.addEventListener("click", async () => {
     await updateWalletBalance();
     walletProfile.hidden = false;
     sendButton.disabled = false;
-    batchSendButton.disabled = false;
+    batchSendButton.disabled = !getSavedLists().some(list => list.loaded);
     renderSavedLists();
 
 // TEMP: NTSP dimension measurement
@@ -340,7 +340,7 @@ sendButton.addEventListener("click", async () => {
       error?.message || "Payment failed or was rejected.";
   } finally {
     sendButton.disabled = false;
-    batchSendButton.disabled = false;
+    batchSendButton.disabled = !getSavedLists().some(list => list.loaded);
   }
 });
 
