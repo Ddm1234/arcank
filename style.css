@@ -3200,3 +3200,14 @@ body {
   z-index: 1000 !important;
 }
 
+
+/* Remove gap below fixed ArcPay header */
+.container {
+  padding-top: 72px !important;
+}
+
+#batchPaymentSection .batch-sticky-summary {
+  top: 72px !important;
+  margin-top: 0 !important;
+}
+
