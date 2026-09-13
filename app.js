@@ -996,6 +996,7 @@ function renderSavedLists() {
         if (!selected) return;
 
         selected.loaded = true;
+    batchSendButton.disabled = !walletProvider || !walletAddress;
 
         const ntspWasOpen = item.classList.contains("ntsp-open");
         const ntspListName = list.name;
