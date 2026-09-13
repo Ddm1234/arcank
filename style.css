@@ -2461,3 +2461,14 @@ header {
   margin-top: 0 !important;
   transform: none !important;
 }
+
+/* Hide Single Payment UI while keeping its elements available to app.js */
+#recipient,
+#amount,
+#sendButton,
+#message,
+label[for="recipient"],
+label[for="amount"] {
+  display: none !important;
+}
+
