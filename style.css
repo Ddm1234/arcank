@@ -2916,3 +2916,15 @@ p.eyebrow:first-of-type {
   font-size: 14px !important;
 }
 
+
+#batchPaymentSection #batchSendButton {
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  padding: 8px 12px !important;
+  margin: 10px auto 0 !important;
+  display: block !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+}
+
