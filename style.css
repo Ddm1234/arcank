@@ -3145,3 +3145,40 @@ p.eyebrow:first-of-type {
   overflow-x: visible !important;
 }
 
+
+/* FINAL: allow batch summary to stick while the whole page scrolls */
+
+html,
+body {
+  overflow: visible !important;
+}
+
+.container {
+  overflow: visible !important;
+}
+
+.card {
+  overflow: visible !important;
+}
+
+#batchPaymentSection {
+  position: static !important;
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+
+#batchPaymentSection .batch-sticky-summary {
+  position: sticky !important;
+  top: 68px !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  background: #12161c !important;
+}
+
+#batchPaymentSection #csvPreviewList {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
