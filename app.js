@@ -1048,6 +1048,7 @@ function renderSavedLists() {
 
         batchPayments.value = "";
         updateCsvPreview([]);
+    batchSendButton.disabled = true;
 
         batchMessage.textContent = "";
 
