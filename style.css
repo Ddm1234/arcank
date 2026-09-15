@@ -3229,3 +3229,7 @@ body {
 
 /* Remove gap below fixed header */
 .container { align-items: flex-start !important; padding-top: 72px !important; }
+
+/* Remove top gap between header and wallet */
+.card { padding-top: 0 !important; }
+#walletSection { margin-top: 0 !important; padding-top: 0 !important; }
