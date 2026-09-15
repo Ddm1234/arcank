@@ -3226,3 +3226,6 @@ body {
   margin-top: 0 !important;
 }
 
+
+/* Remove gap below fixed header */
+.container { align-items: flex-start !important; padding-top: 72px !important; }
